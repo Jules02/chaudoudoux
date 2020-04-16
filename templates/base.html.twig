@@ -8,31 +8,35 @@
         {% endblock %}
     </head>
     <body>
-        <header>
-            <div class="title-section">
-                <a href="{{ path('app_homepage') }}">
-                    <img src="{{ asset('img/logo-lycee.png') }}" alt="Logo lycée" class="logo-lycee"/>
-                    <div class="title">
-                        <h2>Maison des Lycéens du Lycée Européen</h2>
-                        <h1>Chaudoudoux</h1>
-                    </div>
-                </a>
+        <div class="page-container">
+            <div class="content-wrapper">
+            <header>
+                <div class="title-section">
+                    <a href="{{ path('app_homepage') }}">
+                        <img src="{{ asset('img/logo-lycee.png') }}" alt="Logo lycée" class="logo-lycee"/>
+                        <div class="title">
+                            <h2>Maison des Lycéens du Lycée Européen</h2>
+                            <h1>Chaudoudoux</h1>
+                        </div>
+                    </a>
+                </div>
+
+                <a href="#" class="profil">JD</a>
+            </header>
+
+            {% block body %}
+            {% endblock %}
             </div>
 
-            <a href="#" class="profil">JD</a>
-        </header>
+            <footer>
+                <p class="contact">Pour tout problème, contactez la MDL via <a href="https://www.instagram.com/mdleuro/">Instagram (@mdleuro)</a>, via Néo (un des membres de l’équipe), ou par <a href="mailto:julesdupont02@gmail.com">mail</a></p>
+                <a href="#" class="link-footer">Modération</a>
+                <a href="#" class="link-footer">Reversement des bénéfices</a>
+                <a href="https://github.com/Jules02/chaudoudoux" class="link-footer-github"><img src="{{ asset('img/github.png') }}" alt="Logo Github"/></a>
+                <p class="copyright">© 2020 MDL</p>
+            </footer>
+        </div>
 
-        {% block body %}
-        {% endblock %}
-
-        <footer>
-            <p class="contact">Pour tout problème, contactez la MDL via <a href="https://www.instagram.com/mdleuro/">Instagram (@mdleuro)</a>, via Néo (un des membres de l’équipe), ou par <a href="mailto:julesdupont02@gmail.com">mail</a></p>
-            <a href="#" class="link-footer">Modération</a>
-            <a href="#" class="link-footer">Reversement des bénéfices</a>
-            <a href="https://github.com/Jules02/chaudoudoux" class="link-footer-github"><img src="{{ asset('img/github.png') }}" alt="Logo Github"/></a>
-            <p class="copyright">© 2020 MDL</p>
-        </footer>
-        
         {% block javascripts %}{% endblock %}
     </body>
 </html>
