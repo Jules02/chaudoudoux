@@ -8,6 +8,21 @@
 {% endblock %}
 
 {% block body %}
-    <h2>Page d'accueil</h2>
-    <p>Projet de plateforme web Symfony 5 permettant d'adapter les chaudoudoux à la situation de confinement.</p>
+    <div class="content-wrapper">
+        <div class="content-leftpart">
+            <h2 class="content-title">Du xx au xx mai, la MDL organise l’opération des chaudoudoux</h2>
+            <p class="concept">Le concept est le même que pour les chaudoudoux que vous connaissez, on s’envoie des mots gentils avec une petite image (que vous pourrez ici vous-même importer) entre élèves, avec nos enseignants, l’administration, le personnel du lycée, etc., et même les parents ! On s’échange des souvenirs, des sentiments; en cette période on essaie de combler la distance qui nous sépare.</p>
+            <p class="price">Les chaudoudoux sont fixés au prix de <span>0,50€ l’unité. L’entièreté de nos bénéfices sera reversée à nos hôpitaux</span> <a href="#">(en savoir plus)</a>.</p>
+            <p class="signin">Élève, enseignant, personnel de l’administration, du lycée, parent, connectez-vous dès maintenant pour voir si vous avez déjà reçu des chaudoudoux et en envoyer à votre tour !</p>
+            <a class="signin-btn" href="#">Connexion</a>
+        </div>
+
+        <div class="content-rightpart">
+            <div class="chaudoudoux-front">
+                <p>À: Annie Picard (proviseure)<br/><br/>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris consequat lacus nec odio malesuada placerat. Nulla at mi fermentum, mattis odio non, pulvinar ligula. Il n'y a aucun Easter Egg dans ce Lorem Ipsum. Sed tempor massa non tortor euismod, in tincidunt sapien varius. Aenean sollicitudin eget eros quis tristique. Donec congue at est eget iaculis. Duis interdum gravida justo, et lobortis ipsum vulputate eget. In quis mollis nulla, sed ornare orci. Sed et commodo orci. Sed dignissim lacus in ex vehicula scelerisque. Suspendisse fermentum facilisis ipsum. Proin commodo libero sed enim fringilla, eget condimentum ex viverra. In hac habitasse platea dictumst. Donec nec tincidunt nunc, pretium venenatis ante. </p>
+            </div>
+            <div class="chaudoudoux-back"><img src="{{ asset('img/lycee.jpg') }}" alt="Photo exemple chaudoudoux"/></div>
+        </div>
+
+    </div>
 {% endblock %}

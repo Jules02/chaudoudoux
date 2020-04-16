@@ -13,11 +13,9 @@ a{
     height: 100vh;
 }
 
-.content-wrapper{
+.fullcontent-wrapper{
     height: 100%;
 }
-
-
 
 header .logo-lycee{
     width: 100px;
