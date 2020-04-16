@@ -2,13 +2,26 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Chaudoudoux{% endblock %}</title>
+        <title>{% block title %} | Chaudoudoux{% endblock %}</title>
         {% block stylesheets %}
             <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         {% endblock %}
     </head>
     <body>
-        <h1>Plateforme de chaudoudoux</h1>
+        <header>
+            <div class="title-section">
+                <a href="{{ path('app_homepage') }}">
+                    <img src="{{ asset('img/logo-lycee.png') }}" alt="Logo lycée" class="logo-lycee"/>
+                    <div class="title">
+                        <h2>Maison des Lycéens du Lycée Européen</h2>
+                        <h1>Chaudoudoux</h1>
+                    </div>
+                </a>
+            </div>
+
+            <a href="#" class="profil">JD</a>
+        </header>
+
         {% block body %}
         {% endblock %}
         {% block javascripts %}{% endblock %}
