@@ -14,6 +14,6 @@ class IndexController extends AbstractController
      * @Route("/")
      */
     public function homepage(){
-        return new Response('Plateforme dédidée à l\'opération des chaudoudoux.');
+        return $this->render('content/homepage.html.twig');
     }
 }
