@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{{ parent() }}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/homepage_loggedin_style.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="content-wrapper" id="content-wrapper">
+        <div class="tableau-chaudoudoux">
+            <div class="tableau-leftpart tableau-part">
+                <div class="last-chaudoudoux">
+                    <h3>Derniers chaudoudoux</h3>
+                    <ul>
+                        <li>Zoé WINTREBERT (TS3)<span>, il y a 2 minutes</span></li>
+                        <li>Denis CROITORU (1A)<span>, il y a 15 minutes</span></li>
+                        <li>Swan PEZIN (TS2)<span>, il y a 33 minutes</span></li>
+                    </ul>
+                </div>
+                <div class="meschaudoudoux">
+                    <h3>Mes chaudoudoux</h3>
+                    <div class="meschaudoudoux-btncontainer">
+                        <a href="#" class="meschaudoudoux-btn meschaudoudoux-btn-new"><p>Nouveau (3)</p><p>+</p></a>
+                        <a href="#" class="meschaudoudoux-btn"><p>Ancien (12)</p><p>+</p></a>
+                    </div>
+                </div>
+            </div>
+            <div class="tableau-splitter"></div>
+            <div class="tableau-rightpart tableau-part">
+                <div class="classement">
+                    <h3>Classement par classe</h3>
+                    <div class="classement-classe-wrapper">
+                        <div class="classement-classe-container">
+                            <div class="classement-classe2 classement-classe"><p>TS1</p><p>71</p></div>
+                            <div class="classement-classe1 classement-classe"><p>TES3</p><p>78</p></div>
+                            <div class="classement-classe3 classement-classe"><p>1E</p><p>64</p></div>
+                        </div>
+                        <a href="#" class="classement-complet">Classement complet</a>
+                    </div>
+                </div>
+                <div class="compteur">
+                    <h3>Compteur</h3>
+                    <div class="compteur-container">
+                        <p class="compteur-envoyes"><span>670 CHAUDOUDOUX</span><br/>envoyés depuis le<br/>début de l’opération</p>
+                        <p class="compteur-argent"><span class="argent-compteur-soit">soit</span><br/><span class="compteur-argent-value">335€</span><br/>reversés à nos hôpitaux</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a href="#" class="send-chaudoudoux-btn btn btn-blue">Envoyer un chaudoudoux</a>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        var height = window.innerHeight;
+        var contentHeight = height - 172; /* moins la taille du header */
+
+        var contentWrapper = document.getElementById("content-wrapper");
+        var contentHeight_css = contentHeight + "px";
+        contentWrapper.style.height = contentHeight_css;
+    </script>
+{% endblock %}

@@ -81,7 +81,6 @@ body{
 }
 
 .signinpop-btn {
-    text-transform: uppercase;
     text-align: center;
 
     display: block;
@@ -97,6 +96,8 @@ body{
 .content-wrapper{
     display: flex;
     align-items: center;
+
+    min-height: 450px !important;
 }
 
 .content-leftpart{
@@ -129,7 +130,6 @@ body{
 }
 
 .signin-btn{
-    text-transform: uppercase;
     text-align: center;
 
     display: block;

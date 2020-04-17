@@ -18,6 +18,13 @@ class IndexController extends AbstractController
     }
 
     /**
+     * @Route("/loggedin", name="app_homepage_loggedin")
+     */
+    public function homepage_loggedin(){
+        return $this->render('content/homepage_loggedin.html.twig');
+    }
+
+    /**
      * @Route("profil", name="app_profil")
      */
     public function profil(){

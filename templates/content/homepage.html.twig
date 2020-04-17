@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block body %}
-    <div class="content-wrapper">
+    <div class="content-wrapper" id="content-wrapper">
         <div class="content-leftpart">
             <h2 class="content-title">Du xx au xx mai, la MDL organise l’opération des chaudoudoux</h2>
             <p class="concept">Le concept est le même que pour les chaudoudoux que vous connaissez, on s’envoie des mots gentils avec une petite image (que vous pourrez ici vous-même importer) entre élèves, avec nos enseignants, l’administration, le personnel du lycée, etc., et même les parents ! On s’échange des souvenirs, des sentiments; en cette période on essaie de combler la distance qui nous sépare.</p>
@@ -40,6 +40,14 @@
 
 {% block javascripts %}
     <script>
+        var height = window.innerHeight;
+        var contentHeight = height - 172; /* moins la taille du header */
+
+        var contentWrapper = document.getElementById("content-wrapper");
+        var contentHeight_css = contentHeight + "px";
+        contentWrapper.style.height = contentHeight_css;
+
+
         var signin = document.getElementById("signin");
         var signinpop_exit= document.getElementById("signinpop-exit");
         var signinpop = document.getElementById("signinpop");
