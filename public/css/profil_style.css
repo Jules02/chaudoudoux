@@ -1,0 +1,45 @@
+.content-wrapper{
+    padding-left: 50px;
+}
+
+.profil-title{
+    font-stretch: condensed;
+    font-weight: 800;
+    font-size: 26px;
+
+    margin: 18px 0;
+}
+
+.name, .role, .credits{
+    font-size: 18px;
+}
+
+.credits span{
+    font-weight: 800;
+}
+
+
+
+.buy-btn{
+    text-transform: uppercase;
+
+    display: block;
+    width: 500px;
+    padding: 15px 0 15px 50px;
+}
+
+.logout-btn{
+    background-color: rgba(231, 76, 60, 0.1);
+    border: 3px solid #E74C3C;
+
+    color: #E74C3C;
+    font-stretch: condensed;
+    font-weight: 800;
+    font-size: 22px;
+    text-transform: uppercase;
+
+    display: block;
+    width: 494px;
+    padding: 15px 0 15px 50px;
+    margin-top: 30px;
+}

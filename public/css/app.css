@@ -9,6 +9,20 @@ a{
     text-decoration: none;
 }
 
+.btn{
+    border-radius: 50px;
+    box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.1);
+}
+
+.btn-blue{
+    background-color: #3498DB;
+
+    color: white;
+    font-stretch: condensed;
+    font-weight: 800;
+    font-size: 22px;
+}
+
 .page-container{
     height: 100vh;
 }

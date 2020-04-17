@@ -16,4 +16,11 @@ class IndexController extends AbstractController
     public function homepage(){
         return $this->render('content/homepage.html.twig');
     }
+
+    /**
+     * @Route("profil", name="app_profil")
+     */
+    public function profil(){
+        return $this->render('content/profil.html.twig');
+    }
 }
