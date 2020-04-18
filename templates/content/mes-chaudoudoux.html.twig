@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profil{{ parent() }}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {#<link rel="stylesheet" href="{{ asset('css/profil_style.css') }}">#}
+{% endblock %}
+
+{% block body %}
+    <h3>Mes chaudoudoux</h3>
+    {% for chaudoudoux in chaudoudoux %}
+        <p>De: {{ chaudoudoux.fromUser }}</p>
+    {% endfor %}
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}
