@@ -42,11 +42,21 @@ class IndexController extends AbstractController
         $chaudoudouxUnseen= $repository->findUnseen();
         $chaudoudouxSeen = $repository->findSeen();
 
-
-
         return $this->render("content/mes_chaudoudoux.html.twig", [
             'chaudoudouxUnseen' => $chaudoudouxUnseen,
             'chaudoudouxSeen' => $chaudoudouxSeen
+        ]);
+    }
+
+    /**
+     * @Route("chaudoudoux/{id}", name="app_chaudoudoux")
+     */
+    public function chaudoudoux(EntityManagerInterface $em, $id){
+        $repository = $em->getRepository(Chaudoudoux::class);
+        $chaudoudoux = $repository->find($id);
+
+        return $this->render("content/chaudoudoux.html.twig", [
+            'chaudoudoux' => $chaudoudoux
         ]);
     }
 

@@ -37,15 +37,16 @@
             </footer>
         </div>
 
-        {% block javascripts %}
-            <script>
+        <script>
+            window.onload = function(){
                 var contentWrapper = document.getElementById("content-wrapper");
                 var fullContentHeight = contentWrapper.offsetHeight + 172;
 
                 if(fullContentHeight <= window.innerHeight){
-                    document.getElementById("fullcontent-wrapper").style.height = "100vh"
+                    document.getElementById("fullcontent-wrapper").style.height = "100vh";
                 }
-            </script>
-        {% endblock %}
+        {% block javascripts %}{% endblock %}
+            }
+        </script>
     </body>
 </html>

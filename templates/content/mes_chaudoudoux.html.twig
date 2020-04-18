@@ -12,13 +12,13 @@
         <h3 class="content-title">Mes chaudoudoux ({{ chaudoudouxUnseen|length + chaudoudouxSeen|length }})</h3>
         <h4>Nouveaux</h4>
         {% for chaudoudouxUnseen in chaudoudouxUnseen %}
-            <a href="#" class="chaudoudoux-wrapper">{# will be href={{ path('app_chaudoudoux', {'id': chaudoudoux.id}) }}#}
+            <a href="{{ path('app_chaudoudoux', {'id': chaudoudouxUnseen.id}) }}" class="chaudoudoux-wrapper">
                 De: <span class="chaudoudoux-from">{{ chaudoudouxUnseen.fromUser }}</span><span class="chaudoudoux-date">, le {{ chaudoudouxUnseen.publishedAt|date('d', 'Europe/Paris') }} mai à {{ chaudoudouxUnseen.publishedAt|date('H:i', 'Europe/Paris') }}</span>
             </a>
         {% endfor %}
         <h4>Anciens</h4>
         {% for chaudoudouxSeen in chaudoudouxSeen %}
-            <a href="#" class="chaudoudoux-wrapper chaudoudoux-wrapper-seen">{# will be href={{ path('app_chaudoudoux', {'id': chaudoudoux.id}) }}#}
+            <a href="{{ path('app_chaudoudoux', {'id': chaudoudouxSeen.id}) }}" class="chaudoudoux-wrapper chaudoudoux-wrapper-seen">
                 De: <span class="chaudoudoux-from">{{ chaudoudouxSeen.fromUser }}</span><span class="chaudoudoux-date">, le {{ chaudoudouxSeen.publishedAt|date('d', 'Europe/Paris') }} mai à {{ chaudoudouxSeen.publishedAt|date('H:i', 'Europe/Paris') }}</span>
             </a>
         {% endfor %}
@@ -26,5 +26,4 @@
 {% endblock %}
 
 {% block javascripts %}
-    {{ parent() }}
 {% endblock %}

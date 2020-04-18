@@ -1,0 +1,110 @@
+.content-wrapper{
+    display: flex;
+    justify-content: center;
+}
+
+.content-subwrapper{
+    width: 512px;
+}
+
+.content-title{
+    font-stretch: condensed;
+    font-weight: 800;
+
+    margin: 0;
+}
+
+
+
+
+.chaudoudoux-from{
+    font-weight: 200;
+    font-size: 20px;
+
+    margin: 10px 0;
+}
+
+.chaudoudoux-from span{
+    font-weight: 500;
+}
+
+.chaudoudoux-date{
+    font-size: 12px;
+    font-style: italic;
+}
+
+
+.image-chaudoudoux{
+    width: 100%;
+    height: 334px; /* le format environ 500*334px est donc imposé */
+}
+
+.chaudoudoux-front{
+    width: 100%;
+
+    display: none;
+
+    overflow-y: scroll;
+}
+
+.chaudoudoux-front p{
+    margin: 15px;
+
+    font-size: 14px;
+    line-height: 20px;
+    text-align: justify;
+}
+
+.chaudoudoux-front-to{
+    font-weight: 200;
+}
+
+.chaudoudoux-front-to span{
+    font-weight: 400;
+}
+
+
+
+
+.chaudoudoux-side{
+    padding: 0;
+
+    background-color: white;
+
+    width: 512px;
+
+    border: 5px solid #ECF0F1;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.1);
+
+    cursor: pointer;
+}
+
+.flip-button{
+    width: 50px;
+    height: 50px;
+    background-color: #3498DB;
+    border-radius: 50px;
+
+    position: relative;
+    top: -75px;
+    left: 25px;
+
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-answer{
+    display: inline-block;
+    width: 100%;
+
+    text-align: center;
+
+    padding: 10px;
+
+    position: relative;
+    top: -35px;
+}

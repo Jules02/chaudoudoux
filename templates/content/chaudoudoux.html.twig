@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes chaudoudoux{{ parent() }}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/chaudoudoux_style.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="content-wrapper" id="content-wrapper">
+        <div class="content-subwrapper">
+            <h3 class="content-title">Nouveau chaudoudoux</h3>
+            <p class="chaudoudoux-from">De: <span>{{ chaudoudoux.fromUser }}</span></p>
+            <p class="chaudoudoux-date">Le {{ chaudoudoux.publishedAt|date('d', 'Europe/Paris') }} mai à {{ chaudoudoux.publishedAt|date('H:i', 'Europe/Paris') }}</p>
+            <div class="chaudoudoux-back chaudoudoux-side" id="chaudoudoux-back">
+                <img src="{{ asset("img/" ~ chaudoudoux.image) }}" alt="Image chaudoudoux" class="image-chaudoudoux"/>
+            </div>
+            <div class="chaudoudoux-front chaudoudoux-side" id="chaudoudoux-front">
+                <p class="chaudoudoux-front-to">À: <span>{{ chaudoudoux.fromUser }}</span></p>
+                <p class="chaudoudoux-front-text">{{ chaudoudoux.text }}</p>
+            </div>
+            <button class="flip-button" id="flip-button"><img src="{{ asset('img/flip.png') }}" alt="Icône flip"/></button>
+            <a href="#" class="btn btn-blue btn-answer">Répondre</a>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+        var chaudoudouxBack = document.getElementById("chaudoudoux-back");
+        var chaudoudouxFront = document.getElementById("chaudoudoux-front");
+        var flipButton = document.getElementById("flip-button")
+
+        var state = 0 /* 0=back 1=front */
+
+
+        chaudoudouxFront.style.height = chaudoudouxBack.offsetHeight + 'px';
+
+        chaudoudouxBack.onclick = function(){
+            chaudoudouxBack.style.display = "none";
+            chaudoudouxFront.style.display = "block";
+            state = 1;
+        };
+
+        chaudoudouxFront.onclick = function(){
+            chaudoudouxFront.style.display = "none";
+            chaudoudouxBack.style.display = "block";
+
+            state = 0;
+        };
+
+        flipButton.onclick = function(){
+            if(state === 1){
+                chaudoudouxFront.style.display = "none";
+                chaudoudouxBack.style.display = "block";
+
+                state = 0;
+            }else{
+                chaudoudouxBack.style.display = "none";
+                chaudoudouxFront.style.display = "block";
+
+                state = 1;
+            }
+        };
+{% endblock %}
