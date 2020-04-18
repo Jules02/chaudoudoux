@@ -54,12 +54,5 @@
 {% endblock %}
 
 {% block javascripts %}
-    <script>
-        var height = window.innerHeight;
-        var contentHeight = height - 172; /* moins la taille du header */
-
-        var contentWrapper = document.getElementById("content-wrapper");
-        var contentHeight_css = contentHeight + "px";
-        contentWrapper.style.height = contentHeight_css;
-    </script>
+    {{ parent() }}
 {% endblock %}

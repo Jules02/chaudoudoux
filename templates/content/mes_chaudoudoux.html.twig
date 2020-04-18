@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes chaudoudoux{{ parent() }}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/mes_chaudoudoux_style.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="content-wrapper" id="content-wrapper">
+        <h3 class="content-title">Mes chaudoudoux ({{ chaudoudouxUnseen|length + chaudoudouxSeen|length }})</h3>
+        <h4>Nouveaux</h4>
+        {% for chaudoudouxUnseen in chaudoudouxUnseen %}
+            <a href="#" class="chaudoudoux-wrapper">
+                De: <span class="chaudoudoux-from">{{ chaudoudouxUnseen.fromUser }}</span><span class="chaudoudoux-date">, le {{ chaudoudouxUnseen.publishedAt|date('d') }} mai à {{ chaudoudouxUnseen.publishedAt|date('H:i') }}</span>
+            </a>
+        {% endfor %}
+        <h4>Anciens</h4>
+        {% for chaudoudouxSeen in chaudoudouxSeen %}
+            <a href="#" class="chaudoudoux-wrapper chaudoudoux-wrapper-seen">
+                De: <span class="chaudoudoux-from">{{ chaudoudouxSeen.fromUser }}</span><span class="chaudoudoux-date">, le {{ chaudoudouxSeen.publishedAt|date('d') }} mai à {{ chaudoudouxSeen.publishedAt|date('H:i') }}</span>
+            </a>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}

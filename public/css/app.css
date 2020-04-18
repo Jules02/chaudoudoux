@@ -28,14 +28,6 @@ button{
     text-transform: uppercase;
 }
 
-.page-container{
-    height: 100vh;
-}
-
-.fullcontent-wrapper{
-    height: 100%;
-}
-
 header .logo-lycee{
     width: 100px;
 }
@@ -100,6 +92,8 @@ footer{
     align-items: center;
 
     font-weight: 200;
+
+    margin-top: 50px;
 }
 
 footer .contact{

@@ -39,15 +39,8 @@
 {% endblock %}
 
 {% block javascripts %}
+    {{ parent() }}
     <script>
-        var height = window.innerHeight;
-        var contentHeight = height - 172; /* moins la taille du header */
-
-        var contentWrapper = document.getElementById("content-wrapper");
-        var contentHeight_css = contentHeight + "px";
-        contentWrapper.style.height = contentHeight_css;
-
-
         var signin = document.getElementById("signin");
         var signinpop_exit= document.getElementById("signinpop-exit");
         var signinpop = document.getElementById("signinpop");

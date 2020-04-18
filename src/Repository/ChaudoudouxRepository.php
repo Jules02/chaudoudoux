@@ -19,22 +19,33 @@ class ChaudoudouxRepository extends ServiceEntityRepository
         parent::__construct($registry, Chaudoudoux::class);
     }
 
-    // /**
-    //  * @return Chaudoudoux[] Returns an array of Chaudoudoux objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+     * @return Chaudoudoux[] Returns an array of Chaudoudoux objects
+     */
+    public function findUnseen()
     {
         return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
+            ->andWhere('c.seen = :val')
+            ->setParameter('val', 0)
             ->orderBy('c.id', 'ASC')
             ->setMaxResults(10)
             ->getQuery()
-            ->getResult()
-        ;
+            ->getResult();
     }
-    */
+
+    /**
+    * @return Chaudoudoux[] Returns an array of Chaudoudoux objects
+     */
+    public function findSeen()
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.seen = :val')
+            ->setParameter('val', 1)
+            ->orderBy('c.id', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult();
+    }
 
     /*
     public function findOneBySomeField($value): ?Chaudoudoux

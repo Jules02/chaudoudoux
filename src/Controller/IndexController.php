@@ -39,10 +39,14 @@ class IndexController extends AbstractController
      */
     public function mesChaudoudoux(EntityManagerInterface $em){
         $repository = $em->getRepository(Chaudoudoux::class);
-        $chaudoudoux = $repository->findAll();
+        $chaudoudouxUnseen= $repository->findUnseen();
+        $chaudoudouxSeen = $repository->findSeen();
 
-        return $this->render("content/mes-chaudoudoux.html.twig", [
-            'chaudoudoux' => $chaudoudoux,
+
+
+        return $this->render("content/mes_chaudoudoux.html.twig", [
+            'chaudoudouxUnseen' => $chaudoudouxUnseen,
+            'chaudoudouxSeen' => $chaudoudouxSeen
         ]);
     }
 
@@ -52,11 +56,11 @@ class IndexController extends AbstractController
     public function newChaudoudoux(EntityManagerInterface $em){
         $chaudoudoux = new Chaudoudoux();
         $chaudoudoux->setImage("lycee.jpg")
-            ->setFromUser("test.machin")
-            ->setToUser("hugo.dubois")
-            ->setText("Voilà mon chaudoudoux testtnf odo velit. Suspendisse consectetur mauris urna, id iaculis nisi pellentesque eget. Fusce suscipit metus vel cursus sodales. Vestibulum rhoncus enim mauris, quis vulputate erat congue in. Ut varius auctor vestibulum. Vestibulum quis rhoncus ligula, vitae lacinia tellus. Ut vulputate quam vel imperdiet semper. Sed velit metus, tincidunt vitae sapien a, facilisis ultrices purus. Aenean nunc tortor, tincidunt vel faucibus non, pellentesque nec ipsum. Mauris convallis faucibus ex, et consequat mi accumsan a. ")
+            ->setFromUser("sebastien.dupont")
+            ->setToUser("theo.clement")
+            ->setText("Vestibulum quis rhoncus ligula, vitae lacinia tellus. Ut vulputate quam vel imperdiet semper. Sed velit metus, tincidunt vitae sapien a, facilisis ultrices purus. Aenean nunc tortor, tincidunt vel faucibus non, pellentesque nec ipsum. Mauris convallis faucibus ex, et consequat mi accumsan a. ")
             ->setPublishedAt(new \DateTime())
-            ->setSeen(1);
+            ->setSeen(0);
 
         $em->persist($chaudoudoux);
         $em->flush();

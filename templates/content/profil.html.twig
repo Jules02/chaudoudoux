@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block body %}
-    <div class="content-wrapper">
+    <div class="content-wrapper" id="content-wrapper">
         <h3 class="profil-title">Mon profil</h3>
         <p class="name">Jules Dupont</p>
         <p class="role">Élève (<span class="classe">1E</span>)</p>
@@ -19,4 +19,5 @@
 {% endblock %}
 
 {% block javascripts %}
+    {{ parent() }}
 {% endblock %}

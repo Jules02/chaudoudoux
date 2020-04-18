@@ -9,7 +9,7 @@
     </head>
     <body>
         <div class="page-container">
-            <div class="fullcontent-wrapper">
+            <div class="fullcontent-wrapper" id="fullcontent-wrapper">
             <header>
                 <div class="title-section">
                     <a href="{{ path('app_homepage') }}">
@@ -37,6 +37,15 @@
             </footer>
         </div>
 
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+            <script>
+                var contentWrapper = document.getElementById("content-wrapper");
+                var fullContentHeight = contentWrapper.offsetHeight + 172;
+
+                if(fullContentHeight <= window.innerHeight){
+                    document.getElementById("fullcontent-wrapper").style.height = "100vh"
+                }
+            </script>
+        {% endblock %}
     </body>
 </html>
