@@ -21,7 +21,9 @@
                     </a>
                 </div>
 
-                <a href="{{ path('app_profil') }}" class="profil">JD</a>
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    <a href="{{ path('app_profil') }}" class="profil">JD</a>
+                {% endif %}
             </header>
 
             {% block body %}

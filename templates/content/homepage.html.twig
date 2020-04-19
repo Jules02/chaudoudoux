@@ -8,6 +8,7 @@
 {% endblock %}
 
 {% block body %}
+
     <div class="content-wrapper" id="content-wrapper">
         <div class="content-leftpart">
             <h2 class="content-title">Du xx au xx mai, la MDL organise l’opération des chaudoudoux</h2>
@@ -27,12 +28,13 @@
         <div class="signin-wrapper" id="signinpop">
             <div class="signin-wrapperbis">
                 <a id="signinpop-exit"></a>
-                <div class="signinpop-content">
+                {#<div class="signinpop-content">
                     <p class="signinpop-info">Pour obtenir vos codes d’accès, contactez la MDL via <a href="https://www.instagram.com/mdleuro/">Instagram (@mdleuro)</a>, Néo (un des membres de l’équipe), ou par <a href="mailto:julesdupont02@gmail.com">mail</a></p>
                     <p class="fake-field">Identifiant</p>
                     <p class="fake-field">Mot de passe</p>
                     <a href="#" class="signinpop-btn btn btn-blue">Connexion</a>
-                </div>
+                </div>#}
+                {% include 'security/login.html.twig' %}
             </div>
         </div>
     </div>
