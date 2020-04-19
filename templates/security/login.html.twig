@@ -3,23 +3,16 @@
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
 
-    {% if app.user %}
-        <div class="mb-3">
-            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
-        </div>
-    {% endif %}
+    <div class="signinpop-content">
+        <p class="signinpop-info">Pour obtenir vos codes d’accès, contactez la MDL via <a href="https://www.instagram.com/mdleuro/">Instagram (@mdleuro)</a>, Néo (un des membres de l’équipe), ou par <a href="mailto:julesdupont02@gmail.com">mail</a></p>
 
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="inputUsername">Username</label>
-    <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" required autofocus>
-    <label for="inputPassword">Password</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" required>
+        <input placeholder="Nom d'utilisateur" type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-input" required autofocus>
+        <input placeholder="Mot de passe" type="password" name="password" id="inputPassword" class="form-control form-input" required>
 
-    <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}"
-    >
+        <input type="hidden" name="_csrf_token"
+               value="{{ csrf_token('authenticate') }}"
+        >
 
-    <button class="btn btn-lg btn-primary" type="submit">
-        Sign in
-    </button>
+    <button class="signinpop-btn btn btn-blue" type="submit">Connexion</button>
+    </div>
 </form>

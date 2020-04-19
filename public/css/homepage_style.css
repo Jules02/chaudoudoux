@@ -80,7 +80,21 @@ body{
     color: #BABABA;
 }
 
+.form-input{
+    border: 1px solid #BABABA;
+    border-radius: 30px;
+    width: 412px;
+
+    box-sizing: border-box;
+    padding: 15px 30px;
+    margin-bottom: 10px;
+
+    font-size: 16px;
+}
+
 .signinpop-btn {
+    cursor: pointer;
+
     text-align: center;
 
     display: block;

@@ -27,9 +27,11 @@ class IndexController extends AbstractController
 
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
+        if($error){
+            $this->addFlash('error', "Une erreur est survenue lors de votre connexion");
+        }
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
-
 
         return $this->render('content/homepage.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
     }

@@ -1,0 +1,19 @@
+<link rel="stylesheet" href="{{ asset('css/flash_messages_style.css') }}">
+
+{% for type, messages in app.session.flashbag.all() %}
+    {% for message in messages %}
+        <div id="message-container">
+            <p class="message">{{ message | raw }}</p>
+            <button id="hideButton" onclick="cacherBouton()"></button>
+        </div>
+
+        <script>
+            function cacherBouton(){
+                document.getElementById("message-container").style.display = "none";
+            }
+
+            setTimeout(cacherBouton, 10000);
+
+        </script>
+    {% endfor %}
+{% endfor %}
