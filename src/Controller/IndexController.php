@@ -47,9 +47,11 @@ class IndexController extends AbstractController
         $repository = $em->getRepository(Chaudoudoux::class);
         $lastChaudoudoux= $repository->findLast();
 
-        $chaudoudouxUnseen = $repository->findUnseen();
+        $username = $this->getUser()->getUsername();
+
+        $chaudoudouxUnseen = $repository->findUnseen($username);
         $chaudoudouxUnseenLength = count($chaudoudouxUnseen);
-        $chaudoudouxSeen = $repository->findSeen();
+        $chaudoudouxSeen = $repository->findSeen($username);
         $chaudoudouxSeenLength = count($chaudoudouxSeen);
 
         $chaudoudoux = $repository->findAll();
@@ -83,9 +85,11 @@ class IndexController extends AbstractController
     public function mesChaudoudoux(EntityManagerInterface $em){
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
+        $username = $this->getUser()->getUsername();
+
         $repository = $em->getRepository(Chaudoudoux::class);
-        $chaudoudouxUnseen= $repository->findUnseen();
-        $chaudoudouxSeen = $repository->findSeen();
+        $chaudoudouxUnseen= $repository->findUnseen($username);
+        $chaudoudouxSeen = $repository->findSeen($username);
 
         return $this->render("content/mes_chaudoudoux.html.twig", [
             'chaudoudouxUnseen' => $chaudoudouxUnseen,
@@ -99,12 +103,19 @@ class IndexController extends AbstractController
     public function chaudoudoux(EntityManagerInterface $em, $id){
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
+        $username = $this->getUser()->getUsername();
+
         $repository = $em->getRepository(Chaudoudoux::class);
         $chaudoudoux = $repository->find($id);
 
-        return $this->render("content/chaudoudoux.html.twig", [
-            'chaudoudoux' => $chaudoudoux
-        ]);
+        if($username == $chaudoudoux->getToUser()){
+            return $this->render("content/chaudoudoux.html.twig", [
+                'chaudoudoux' => $chaudoudoux
+            ]);
+        }else{
+            $this->addFlash('error', "Vous n'êtes pas le destinataire de ce chaudoudoux");
+            return $this->redirectToRoute('app_homepage_loggedin');
+        }
     }
 
     /**
