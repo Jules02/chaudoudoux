@@ -10,9 +10,16 @@
 {% block body %}
     <div class="content-wrapper" id="content-wrapper">
         <h3 class="profil-title">Mon profil</h3>
-        <p class="name">Jules Dupont</p>
-        <p class="role">Élève (<span class="classe">1E</span>)</p>
-        <p class="credits">Chaudoudoux disponibles: <span>3</span></p>
+        <p class="name">{{ app.user.firstName }} {{ app.user.lastName }}</p>
+        <p class="role">
+            {% set titre = app.user.titre %}
+            {% if titre == "eleve" %}
+                Élève (<span class="classe">{{ app.user.classe }}</span>)
+            {% else %}
+                {{ titre|capitalize }}
+            {% endif %}
+        </p>
+        <p class="credits">Chaudoudoux disponibles: <span>{{ app.user.credits }}</span></p>
         <a href="#" class="buy-btn btn btn-blue">Acheter des chaudoudoux</a>
         <a href="{{ path('app_logout') }}" class="logout-btn btn">Déconnexion</a>
     </div>

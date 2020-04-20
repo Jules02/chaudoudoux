@@ -46,12 +46,17 @@ class IndexController extends AbstractController
     }
 
     /**
-     * @Route("/profil", name="app_profil")
+     * @Route("/profil/{username}", name="app_profil")
      */
-    public function profil(){
+    public function profil($username){
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
-        return $this->render('content/profil.html.twig');
+        $user = $this->getUser();
+        if($user->getUsername() === $username){
+            return $this->render('content/profil.html.twig');
+        }else{
+            return $this->redirectToRoute('app_homepage_loggedin');
+        }
     }
 
     /**

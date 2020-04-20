@@ -22,7 +22,7 @@
                 </div>
 
                 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                    <a href="{{ path('app_profil') }}" class="profil">JD</a>
+                    <a href="{{ path('app_profil', {'username': app.user.username}) }}" class="profil">{{ app.user.firstName|first }}{{ app.user.lastName|first }}</a>
                 {% endif %}
             </header>
 

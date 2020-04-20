@@ -41,4 +41,7 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        - { path: ^/$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        # but, definitely allow /login to be accessible anonymously
+        - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        # if you wanted to force EVERY URL to be protected
+        - { path: ^/$, roles: IS_AUTHENTICATED_FULLY }
