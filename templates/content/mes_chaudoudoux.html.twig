@@ -12,14 +12,16 @@
         <h3 class="content-title">Mes chaudoudoux ({{ chaudoudouxUnseen|length + chaudoudouxSeen|length }})</h3>
         <h4>Nouveaux</h4>
         {% for chaudoudouxUnseen in chaudoudouxUnseen %}
+            {% set fullName %}{% for name in chaudoudouxUnseen.fromUser|split('.') %}{{ name|capitalize }} {% endfor %}{% endset %}
             <a href="{{ path('app_chaudoudoux', {'id': chaudoudouxUnseen.id}) }}" class="chaudoudoux-wrapper">
-                De: <span class="chaudoudoux-from">{{ chaudoudouxUnseen.fromUser }}</span><span class="chaudoudoux-date">, le {{ chaudoudouxUnseen.publishedAt|date('d', 'Europe/Paris') }} mai à {{ chaudoudouxUnseen.publishedAt|date('H:i', 'Europe/Paris') }}</span>
+                De: <span class="chaudoudoux-from">{{ fullName|trim(' ', 'right') }}</span><span class="chaudoudoux-date">, le {{ chaudoudouxUnseen.publishedAt|date('d', 'Europe/Paris') }} mai à {{ chaudoudouxUnseen.publishedAt|date('H:i', 'Europe/Paris') }}</span>
             </a>
         {% endfor %}
         <h4>Anciens</h4>
         {% for chaudoudouxSeen in chaudoudouxSeen %}
+            {% set fullName %}{% for name in chaudoudouxSeen.fromUser|split('.') %}{{ name|capitalize }} {% endfor %}{% endset %}
             <a href="{{ path('app_chaudoudoux', {'id': chaudoudouxSeen.id}) }}" class="chaudoudoux-wrapper chaudoudoux-wrapper-seen">
-                De: <span class="chaudoudoux-from">{{ chaudoudouxSeen.fromUser }}</span><span class="chaudoudoux-date">, le {{ chaudoudouxSeen.publishedAt|date('d', 'Europe/Paris') }} mai à {{ chaudoudouxSeen.publishedAt|date('H:i', 'Europe/Paris') }}</span>
+                De: <span class="chaudoudoux-from">{{ fullName|trim(' ', 'right') }}</span><span class="chaudoudoux-date">, le {{ chaudoudouxSeen.publishedAt|date('d', 'Europe/Paris') }} mai à {{ chaudoudouxSeen.publishedAt|date('H:i', 'Europe/Paris') }}</span>
             </a>
         {% endfor %}
     </div>

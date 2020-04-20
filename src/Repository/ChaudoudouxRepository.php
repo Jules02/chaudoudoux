@@ -22,13 +22,25 @@ class ChaudoudouxRepository extends ServiceEntityRepository
     /**
      * @return Chaudoudoux[] Returns an array of Chaudoudoux objects
      */
+    public function findLast()
+    {
+        return $this->createQueryBuilder('c')
+            ->orderBy('c.id', 'DESC')
+            ->setMaxResults(3)
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
+     * @return Chaudoudoux[] Returns an array of Chaudoudoux objects
+     */
     public function findUnseen()
     {
         return $this->createQueryBuilder('c')
             ->andWhere('c.seen = :val')
             ->setParameter('val', 0)
             ->orderBy('c.id', 'ASC')
-            ->setMaxResults(10)
+            ->setMaxResults(12)
             ->getQuery()
             ->getResult();
     }
@@ -42,7 +54,7 @@ class ChaudoudouxRepository extends ServiceEntityRepository
             ->andWhere('c.seen = :val')
             ->setParameter('val', 1)
             ->orderBy('c.id', 'ASC')
-            ->setMaxResults(10)
+            ->setMaxResults(12)
             ->getQuery()
             ->getResult();
     }

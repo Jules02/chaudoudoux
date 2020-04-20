@@ -14,16 +14,17 @@
                 <div class="last-chaudoudoux">
                     <h3>Derniers chaudoudoux</h3>
                     <ul>
-                        <li>Zoé WINTREBERT (TS3)<span>, il y a 2 minutes</span></li>
-                        <li>Denis CROITORU (1A)<span>, il y a 15 minutes</span></li>
-                        <li>Swan PEZIN (TS2)<span>, il y a 33 minutes</span></li>
+                   {% for chaudoudoux in lastChaudoudoux %}
+                       {% set fullName %}{% for name in chaudoudoux.toUser|split('.') %}{{ name|capitalize }} {% endfor %}{% endset %}
+                        <li>{{ fullName|trim(' ', 'right') }}<span>, à {{ chaudoudoux.publishedAt|date('H:i', 'Europe/Paris') }}</span></li>
+                    {% endfor %}
                     </ul>
                 </div>
                 <div class="meschaudoudoux">
                     <h3>Mes chaudoudoux</h3>
                     <div class="meschaudoudoux-btncontainer">
-                        <a href="{{ path('app_meschaudoudoux') }}" class="meschaudoudoux-btn meschaudoudoux-btn-new"><p>Nouveau (3)</p><p>+</p></a>
-                        <a href="{{ path('app_meschaudoudoux') }}" class="meschaudoudoux-btn"><p>Ancien (12)</p><p>+</p></a>
+                        <a href="{{ path('app_meschaudoudoux') }}" class="meschaudoudoux-btn meschaudoudoux-btn-new"><p>Nouveau ({{ chaudoudouxUnseenLength}})</p><p>+</p></a>
+                        <a href="{{ path('app_meschaudoudoux') }}" class="meschaudoudoux-btn"><p>Anciens ({{ chaudoudouxSeenLength}})</p><p>+</p></a>
                     </div>
                 </div>
             </div>
@@ -33,9 +34,9 @@
                     <h3>Classement par classe</h3>
                     <div class="classement-classe-wrapper">
                         <div class="classement-classe-container">
-                            <div class="classement-classe2 classement-classe"><p>TS1</p><p>71</p></div>
-                            <div class="classement-classe1 classement-classe"><p>TES3</p><p>78</p></div>
-                            <div class="classement-classe3 classement-classe"><p>1E</p><p>64</p></div>
+                            <div class="classement-classe2 classement-classe"><p class="classement-classe-p">TS1</p><p>71</p></div>
+                            <div class="classement-classe1 classement-classe"><p class="classement-classe-p">TES3</p><p>78</p></div>
+                            <div class="classement-classe3 classement-classe"><p class="classement-classe-p">1E</p><p>64</p></div>
                         </div>
                         <a href="#" class="classement-complet">Classement complet</a>
                     </div>
@@ -43,8 +44,8 @@
                 <div class="compteur">
                     <h3>Compteur</h3>
                     <div class="compteur-container">
-                        <p class="compteur-envoyes"><span>670 CHAUDOUDOUX</span><br/>envoyés depuis le<br/>début de l’opération</p>
-                        <p class="compteur-argent"><span class="argent-compteur-soit">soit</span><br/><span class="compteur-argent-value">335€</span><br/>reversés à nos hôpitaux</p>
+                        <p class="compteur-envoyes"><span>{{ chaudoudouxLength }} CHAUDOUDOUX</span><br/>envoyés depuis le<br/>début de l’opération</p>
+                        <p class="compteur-argent"><span class="argent-compteur-soit">soit</span><br/><span class="compteur-argent-value">{{ chaudoudouxLength / 2}}€</span><br/>reversés à nos hôpitaux</p>
                     </div>
                 </div>
             </div>

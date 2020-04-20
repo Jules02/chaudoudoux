@@ -39,10 +39,26 @@ class IndexController extends AbstractController
     /**
      * @Route("/accueil", name="app_homepage_loggedin")
      */
-    public function homepage_loggedin(){
+    public function homepage_loggedin(EntityManagerInterface $em){
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
-        return $this->render('content/homepage_loggedin.html.twig');
+        $repository = $em->getRepository(Chaudoudoux::class);
+        $lastChaudoudoux= $repository->findLast();
+
+        $chaudoudouxUnseen = $repository->findUnseen();
+        $chaudoudouxUnseenLength = count($chaudoudouxUnseen);
+        $chaudoudouxSeen = $repository->findSeen();
+        $chaudoudouxSeenLength = count($chaudoudouxSeen);
+
+        $chaudoudoux = $repository->findAll();
+        $chaudoudouxLength = count($chaudoudoux);
+
+        return $this->render('content/homepage_loggedin.html.twig', [
+            'lastChaudoudoux' => $lastChaudoudoux,
+            'chaudoudouxUnseenLength' => $chaudoudouxUnseenLength,
+            'chaudoudouxSeenLength' => $chaudoudouxSeenLength,
+            'chaudoudouxLength' => $chaudoudouxLength
+        ]);
     }
 
     /**
@@ -95,9 +111,9 @@ class IndexController extends AbstractController
     public function newChaudoudoux(EntityManagerInterface $em){
         $chaudoudoux = new Chaudoudoux();
         $chaudoudoux->setImage("lycee.jpg")
-            ->setFromUser("sebastien.dupont")
-            ->setToUser("theo.clement")
-            ->setText("Vestibulum quis rhoncus ligula, vitae lacinia tellus. Ut vulputate quam vel imperdiet semper. Sed velit metus, tincidunt vitae sapien a, facilisis ultrices purus. Aenean nunc tortor, tincidunt vel faucibus non, pellentesque nec ipsum. Mauris convallis faucibus ex, et consequat mi accumsan a. ")
+            ->setFromUser("theo.guilbaud")
+            ->setToUser("michel.bernard")
+            ->setText("Ut vulputate quam vel imperdiet semper. Sed velit metus, tincidunt vitae sapien a, facilisis ultrices purus. Aenean nunc tortor, tincidunt vel faucibus non, pellentesque nec ipsum. Mauris convallis faucibus ex, et consequat mi accumsan a. ")
             ->setPublishedAt(new \DateTime())
             ->setSeen(0);
 
