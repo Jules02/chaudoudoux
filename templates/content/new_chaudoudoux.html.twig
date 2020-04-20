@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau chaudoudoux{{ parent() }}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/homepage_loggedin_style.css') }}">
+{% endblock %}
+
+{% block body %}
+
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button class="signinpop-btn btn btn-blue" type="submit">Connexion</button>
+{{ form_end(form) }}
+
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}

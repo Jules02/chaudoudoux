@@ -6,8 +6,10 @@ namespace App\Controller;
 
 use App\Entity\Chaudoudoux;
 use App\Entity\User;
+use App\Form\ChaudoudouxType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -108,7 +110,38 @@ class IndexController extends AbstractController
     /**
      * @Route("/newChaudoudoux", name="app_newChaudoudoux")
      */
-    public function newChaudoudoux(EntityManagerInterface $em){
+    public function newChaudoudoux(Request $request, EntityManagerInterface $em){
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
+        $chaudoudoux = new Chaudoudoux();
+
+        $form = $this->createForm(ChaudoudouxType::class, $chaudoudoux);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $chaudoudoux = $form->getData();
+
+            $chaudoudoux->setFromUser($this->getUser()->getUsername());
+            $chaudoudoux->setPublishedAt(new \DateTime());
+            $chaudoudoux->setSeen(0);
+
+            $em->persist($chaudoudoux);
+            $em->flush();
+
+            $this->addFlash('success', "Votre chaudoudoux a bien été envoyé. Merci !");
+
+            return $this->redirectToRoute('app_homepage_loggedin');
+        }
+
+        return $this->render("content/new_chaudoudoux.html.twig",[
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/newChaudoudoux-fake", name="app_newChaudoudouxFake")
+     */
+    public function newChaudoudouxFake(EntityManagerInterface $em){
         $chaudoudoux = new Chaudoudoux();
         $chaudoudoux->setImage("lycee.jpg")
             ->setFromUser("theo.guilbaud")
