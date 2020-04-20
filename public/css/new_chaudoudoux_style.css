@@ -1,0 +1,63 @@
+.content-wrapper{
+    padding: 0 50px;
+}
+
+.form-title{
+    font-stretch: condensed;
+    font-weight: 800;
+    font-size: 26px;
+
+    margin: 0 0 10px;
+}
+
+form label{
+    font-style: italic;
+}
+
+.toUser-field{
+    border: 1px solid #BABABA;
+    border-radius: 30px;
+    width: 100%;
+
+    box-sizing: border-box;
+    padding: 15px 30px;
+    margin-top: 10px;
+
+    font-size: 16px;
+}
+
+#chaudoudoux_image_bis img{
+    width: 100px;
+}
+
+
+.field-container{
+    margin-bottom: 30px;
+}
+
+.text-field{
+    border: 1px solid #BABABA;
+    border-radius: 3px;
+    width: 100%;
+
+    box-sizing: border-box;
+    padding: 15px 30px;
+    margin-top: 10px;
+
+    font-family: 'Helvetica Neue', serif;
+    font-size: 16px;
+
+    resize: none;
+}
+
+.submit-btn{
+    width: 100%;
+
+    padding: 15px;
+
+    cursor: pointer;
+}
+
+#chaudoudoux_image{
+    display: none;
+}

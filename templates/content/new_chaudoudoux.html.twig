@@ -4,17 +4,38 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    <link rel="stylesheet" href="{{ asset('css/homepage_loggedin_style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/new_chaudoudoux_style.css') }}">
 {% endblock %}
 
 {% block body %}
-
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="signinpop-btn btn btn-blue" type="submit">Connexion</button>
-{{ form_end(form) }}
-
+    <div class="content-wrapper" id="content-wrapper">
+        <h3 class="form-title">Écrire un nouveau chaudoudoux</h3>
+        {{ form_start(form) }}
+            <div class="toUser-container field-container">
+                <label class="toUser-label">Commencez par choisir un destinataire</label>
+                {{ form_row(form.toUser) }}
+            </div>
+            <div class="image-container field-container">
+                <label class="image-label">Choisissez une image</label>
+                <div>
+                    <div id="chaudoudoux_image_bis" class="image-field">
+                        <input type="radio" id="chaudoudoux_image_0" name="chaudoudoux[image]" required="required" value="star-wars.jpg">
+                        <label for="chaudoudoux_image_0" class="required"><img src="{{ asset('img/star-wars.jpg') }}" alt="Image Star Wars"/></label>
+                        <input type="radio" id="chaudoudoux_image_1" name="chaudoudoux[image]" required="required" value="lycee.jpg">
+                        <label for="chaudoudoux_image_1" class="required"><img src="{{ asset('img/lycee.jpg') }}" alt="Image Lycée"/></label>
+                    </div>
+                </div>
+                {{ form_errors(form.image) }}
+            </div>
+            <div class="text-container field-container">
+                <label class="text-label">Écrivez désormais votre message</label>
+                {{ form_row(form.text) }}
+            </div>
+            <button class="submit-btn btn btn-blue" type="submit">Envoyer</button>
+        {{ form_end(form) }}
+    </div>
 {% endblock %}
 
 {% block javascripts %}
+
 {% endblock %}
