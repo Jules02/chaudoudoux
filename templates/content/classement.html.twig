@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Classement{{ parent() }}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/classement_style.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="content-wrapper" id="content-wrapper">
+        <h3 class="classement-title">Classement complet par classe (par nombre de chaudoudoux envoyés)</h3>
+        <ol class="classement">
+        {% for key, value in chaudoudouxClasseRank %}
+            <li><span class="classement-classe-span">{{ key }}</span> <span>({{ value }} chaudoudoux envoyés)</span></li>
+            <div class="classement-divider"></div>
+        {% endfor %}
+        </ol>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}

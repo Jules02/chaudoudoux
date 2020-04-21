@@ -63,6 +63,18 @@ class ChaudoudouxRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    /**
+     * @return Chaudoudoux[] Returns an array of Chaudoudoux objects
+     */
+    public function findByClasse($classe)
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.fromUserClasse = :val')
+            ->setParameter('val', $classe)
+            ->getQuery()
+            ->getResult();
+    }
+
     /*
     public function findOneBySomeField($value): ?Chaudoudoux
     {

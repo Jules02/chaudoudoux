@@ -115,14 +115,14 @@
     margin: 0;
 }
 
-.classement-classe2{
+.classement-classe:nth-child(1){
     width: 100px;
     height: 100px;
 
     background-color: #E69513;
 }
 
-.classement-classe1{
+.classement-classe:nth-child(2){
     width: 124px;
     height: 124px;
 
@@ -131,7 +131,7 @@
     margin: 10px 5px 0;
 }
 
-.classement-classe3{
+.classement-classe:nth-child(3){
     width: 112px;
     height: 112px;
 

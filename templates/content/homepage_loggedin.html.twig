@@ -34,11 +34,11 @@
                     <h3>Classement par classe</h3>
                     <div class="classement-classe-wrapper">
                         <div class="classement-classe-container">
-                            <div class="classement-classe2 classement-classe"><p class="classement-classe-p">TS1</p><p>71</p></div>
-                            <div class="classement-classe1 classement-classe"><p class="classement-classe-p">TES3</p><p>78</p></div>
-                            <div class="classement-classe3 classement-classe"><p class="classement-classe-p">1E</p><p>64</p></div>
+                            {% for key, value in chaudoudouxClasseRanked %}
+                                <div class="classement-classe{{ loop.index }} classement-classe"><p class="classement-classe-p">{{ key }}</p><p>{{ value }}</p></div>
+                            {% endfor %}
                         </div>
-                        <a href="#" class="classement-complet">Classement complet</a>
+                        <a href="{{ path('app_classement') }}" class="classement-complet">Classement complet</a>
                     </div>
                 </div>
                 <div class="compteur">

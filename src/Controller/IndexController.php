@@ -17,6 +17,12 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class IndexController extends AbstractController
 {
+    const CLASSES = array(
+        '2A', '2B', '2C', '2D', '2E', '2F', '2H',
+        '1A', '1B', '1C', '1D', '1E', '1F',
+        'TL', 'TS1', 'TS2', 'TES1', 'TES2', 'TES3'
+    );
+
     /**
      * @Route("/", name="app_homepage")
      */
@@ -45,6 +51,7 @@ class IndexController extends AbstractController
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
         $repository = $em->getRepository(Chaudoudoux::class);
+
         $lastChaudoudoux= $repository->findLast();
 
         $username = $this->getUser()->getUsername();
@@ -57,11 +64,55 @@ class IndexController extends AbstractController
         $chaudoudoux = $repository->findAll();
         $chaudoudouxLength = count($chaudoudoux);
 
+
+
+        $classes = self::CLASSES;
+        $classesLength = count($classes);
+        $chaudoudouxClasseRank = array();
+        for($i = 0; $i <=  $classesLength - 1; $i++){
+            $classe =  $classes[$i];
+            $chaudoudouxClasse = $repository->findByClasse($classe);
+            $chaudoudouxClasseRank[$classes[$i]] = count($chaudoudouxClasse);
+        }
+
+        arsort($chaudoudouxClasseRank);
+        $chaudoudouxClasseRanked = array_slice($chaudoudouxClasseRank, 0, 3);
+        asort($chaudoudouxClasseRanked);
+        $temp = array_slice($chaudoudouxClasseRanked, 1, 2);
+        arsort($temp);
+        $chaudoudouxClasseRankedFinal = array_merge(array_slice($chaudoudouxClasseRanked, 0, 1), $temp);
+
+
         return $this->render('content/homepage_loggedin.html.twig', [
             'lastChaudoudoux' => $lastChaudoudoux,
             'chaudoudouxUnseenLength' => $chaudoudouxUnseenLength,
             'chaudoudouxSeenLength' => $chaudoudouxSeenLength,
-            'chaudoudouxLength' => $chaudoudouxLength
+            'chaudoudouxLength' => $chaudoudouxLength,
+            'chaudoudouxClasseRanked' => $chaudoudouxClasseRankedFinal,
+        ]);
+    }
+
+    /**
+     * @Route("/classement", name="app_classement")
+     */
+    public function classement(EntityManagerInterface $em){
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
+        $repository = $em->getRepository(Chaudoudoux::class);
+
+        $classes = self::CLASSES;
+        $classesLength = count($classes);
+        $chaudoudouxClasseRank = array();
+        for($i = 0; $i <=  $classesLength - 1; $i++){
+            $classe =  $classes[$i];
+            $chaudoudouxClasse = $repository->findByClasse($classe);
+            $chaudoudouxClasseRank[$classes[$i]] = count($chaudoudouxClasse);
+        }
+
+        arsort($chaudoudouxClasseRank);
+
+        return $this->render('content/classement.html.twig', [
+            'chaudoudouxClasseRank' => $chaudoudouxClasseRank,
         ]);
     }
 
@@ -149,6 +200,7 @@ class IndexController extends AbstractController
             $chaudoudoux->setFromUser($this->getUser()->getUsername());
             $chaudoudoux->setPublishedAt(new \DateTime());
             $chaudoudoux->setSeen(0);
+            $chaudoudoux->setFromUserClasse($this->getUser()->getClasse());
 
             $em->persist($chaudoudoux);
             $em->flush();
