@@ -159,6 +159,13 @@ class IndexController extends AbstractController
         $repository = $em->getRepository(Chaudoudoux::class);
         $chaudoudoux = $repository->find($id);
 
+        if($chaudoudoux->getSeen() == 0){
+            $chaudoudoux->setSeen(1);
+        }
+
+        $em->persist($chaudoudoux);
+        $em->flush();
+
         if($username == $chaudoudoux->getToUser()){
             return $this->render("content/chaudoudoux.html.twig", [
                 'chaudoudoux' => $chaudoudoux
@@ -214,6 +221,11 @@ class IndexController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
+
+
+
+
 
     /**
      * @Route("/newChaudoudoux-fake", name="app_newChaudoudouxFake")

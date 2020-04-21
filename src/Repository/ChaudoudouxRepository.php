@@ -41,7 +41,7 @@ class ChaudoudouxRepository extends ServiceEntityRepository
             ->setParameter('val', $username)
             ->andWhere('c.seen = :val2')
             ->setParameter('val2', 0)
-            ->orderBy('c.id', 'ASC')
+            ->orderBy('c.id', 'DESC')
             ->setMaxResults(10)
             ->getQuery()
             ->getResult();
@@ -57,7 +57,7 @@ class ChaudoudouxRepository extends ServiceEntityRepository
             ->setParameter('val', $username)
             ->andWhere('c.seen = :val2')
             ->setParameter('val2', 1)
-            ->orderBy('c.id', 'ASC')
+            ->orderBy('c.id', 'DESC')
             ->setMaxResults(10)
             ->getQuery()
             ->getResult();

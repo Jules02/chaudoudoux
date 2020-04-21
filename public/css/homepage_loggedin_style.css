@@ -62,7 +62,8 @@
     display: flex;
     justify-content: space-between;
 
-    background-color: #F39C12;
+    background: rgb(243,156,18);
+    background: linear-gradient(90deg, rgba(243,156,18,1) 25%, rgba(246,179,39,1) 100%);
     color: white;
 
     padding: 15px 30px;
@@ -84,7 +85,7 @@
 }
 
 .meschaudoudoux-btn-new{
-    border: 2px solid #BC7910
+    border: 3px solid rgb(243, 156, 18);
 }
 
 
@@ -119,14 +120,16 @@
     width: 100px;
     height: 100px;
 
-    background-color: #E69513;
+    background: rgb(230,149,19);
+    background: linear-gradient(90deg, rgba(230,149,19,1) 25%, rgba(236,168,24,1) 100%);
 }
 
 .classement-classe:nth-child(2){
     width: 124px;
     height: 124px;
 
-    background-color: #F39C12;
+    background: rgb(243,156,18);
+    background: linear-gradient(90deg, rgba(243,156,18,1) 25%, rgba(246,179,39,1) 100%);
 
     margin: 10px 5px 0;
 }
@@ -135,7 +138,8 @@
     width: 112px;
     height: 112px;
 
-    background-color: #D98C11;
+    background: rgb(217,140,17);
+    background: linear-gradient(90deg, rgba(217,140,17,1) 25%, rgba(227,160,19,1) 100%);
 }
 
 .classement-classe-wrapper a{
@@ -154,7 +158,8 @@
 
 
 .compteur-container{
-    background-color: #F39C12;
+    background: rgb(243,156,18);
+    background: linear-gradient(90deg, rgba(243,156,18,1) 25%, rgba(246,179,39,1) 100%);
 
     width: 500px;
     height: 100px;
@@ -185,6 +190,7 @@
 .compteur-argent{
     text-align: center;
 
+    color: white;
     font-weight: 300;
 }
 

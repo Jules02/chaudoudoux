@@ -20,7 +20,8 @@
     display: block;
     width: 100%;
 
-    background-color: #3498DB;
+    background: rgb(52,152,219);
+    background: linear-gradient(90deg, rgba(52,152,219,1) 25%, rgba(66,170,240,1) 100%);
 
     color: white;
     font-weight: 200;
@@ -36,7 +37,7 @@
 }
 
 .chaudoudoux-wrapper-seen{
-    background-color: white;
+    background: none;
 
     border-color: #3498DB;
 

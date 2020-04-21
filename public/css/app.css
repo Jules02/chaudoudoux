@@ -26,10 +26,12 @@ input{
 
 button{
     border: none;
+    cursor: pointer;
 }
 
 .btn-blue{
-    background-color: #3498DB;
+    background: rgb(52,152,219);
+    background: linear-gradient(90deg, rgba(52,152,219,1) 25%, rgba(66,170,240,1) 100%);
 
     color: white;
     font-stretch: condensed;
@@ -84,8 +86,9 @@ header .profil{
 
     padding: 15px;
 
-    background-color: #3498DB;
-    border: 3px solid #2977AC;
+    background: rgb(52,152,219);
+    background: linear-gradient(90deg, rgba(52,152,219,1) 25%, rgba(66,170,240,1) 100%);
+    border: 3px solid rgba(52,152,219,1);
     border-radius: 60px;
 
     color: white;
