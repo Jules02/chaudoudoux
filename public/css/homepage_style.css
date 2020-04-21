@@ -50,10 +50,6 @@ body{
     padding: 0;
 }
 
-#signinpop-exit:hover{
-    cursor: pointer;
-}
-
 .signinpop-info{
     font-size: 18px;
 

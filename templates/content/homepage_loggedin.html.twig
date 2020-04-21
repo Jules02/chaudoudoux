@@ -50,9 +50,38 @@
                 </div>
             </div>
         </div>
-        <a href="{{ path('app_newChaudoudoux') }}" class="send-chaudoudoux-btn btn btn-blue">Envoyer un chaudoudoux</a>
+        <button class="send-chaudoudoux-btn btn btn-blue" id="credits-alert">Envoyer un chaudoudoux</button>
+
+        <div class="credits-alert-wrapper" id="credits-alert-wrapper">
+            <div class="credits-alert-wrapperbis">
+                <button id="credits-alert-exit"></button>
+                {% include 'content/credits_alert.html.twig' %}
+            </div>
+        </div>
     </div>
 {% endblock %}
 
 {% block javascripts %}
+    var creditsAlert = document.getElementById("credits-alert");
+    var creditsAlert_exit= document.getElementById("credits-alert-exit");
+    var creditsAlertWrapper = document.getElementById("credits-alert-wrapper");
+
+    creditsAlert.onclick = function(){
+        creditsAlertWrapper.style.display = "flex";
+    };
+
+    creditsAlert_exit.onclick = function(){
+        creditsAlertWrapper.style.display = "none";
+    };
+
+
+    document.onkeydown = function(evt) {
+    var isEscape = false;
+    if ("key" in evt) {
+        isEscape = (evt.key === "Escape" || evt.key === "Esc");
+    }
+    if (isEscape) {
+        creditsAlertWrapper.style.display = "none";
+    }
+    };
 {% endblock %}

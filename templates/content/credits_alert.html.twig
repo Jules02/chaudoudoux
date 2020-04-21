@@ -1,0 +1,11 @@
+<div class="credits-alert-content">
+    {% if app.user.credits == 0 %}
+        <p class="credits-alert-text">Vous n'avez plus de chaudoudoux</p>
+        <a href="{{ path('app_profil', {'username': app.user.username}) }}" class="credits-alert-continuer-btn btn btn-blue">Voir mon profil</a>
+    {% else %}
+        <h3 class="credits-alert-warning">Attention !</h3>
+        <p class="credits-alert-text">Il vous reste <span>{{ app.user.credits }}</span> chaudoudoux</p>
+        <a href="{{ path('app_newChaudoudoux') }}" class="credits-alert-continuer-btn btn btn-blue">Continuer</a>
+        <a href="{{ path('app_profil', {'username': app.user.username}) }}"  class="credits-alert-profil">Voir mon profil</a>
+    {% endif %}
+</div>
