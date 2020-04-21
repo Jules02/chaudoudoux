@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reversement des bénéfices{{ parent() }}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/benefices_style.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="content-wrapper" id="content-wrapper">
+        <h3 class="benefices-title">Reversement des bénéfices</h3>
+        <p class="benefices-text">
+            La Maison des Lycéens s'engage dans cette période difficile en reversant l'intégratlité des bénéfices de cette opération à nos hôpitaux qui luttent contre cette crise du COVID-19<br/><br/>
+            Les modalités exactes du reversement des bénéfices n'ont pas encore été définies.<br/><br/>
+            N'hésitez pas à contacter la MDL pour tout renseignement.
+        </p>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}

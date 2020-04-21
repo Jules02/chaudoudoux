@@ -50,6 +50,16 @@ form label{
     resize: none;
 }
 
+.text-moderation-label{
+    margin: 5px 0;
+
+    font-size: 12px;
+}
+
+.text-moderation-label a{
+    text-decoration: underline;
+}
+
 .submit-btn{
     width: 100%;
 

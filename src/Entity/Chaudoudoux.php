@@ -46,6 +46,11 @@ class Chaudoudoux
      */
     private $seen;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $fromUserClasse;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -119,6 +124,18 @@ class Chaudoudoux
     public function setSeen(bool $seen): self
     {
         $this->seen = $seen;
+
+        return $this;
+    }
+
+    public function getFromUserClasse(): ?string
+    {
+        return $this->fromUserClasse;
+    }
+
+    public function setFromUserClasse(?string $fromUserClasse): self
+    {
+        $this->fromUserClasse = $fromUserClasse;
 
         return $this;
     }

@@ -29,6 +29,7 @@
             </div>
             <div class="text-container field-container">
                 <label class="text-label">Écrivez désormais votre message</label>
+                <p class="text-moderation-label">Attention ! La MDL se réserve le droit de supprimer un chaudoudoux pour son message (incitation à la haine, racisme, homophobie). <a href="{{ path('app_moderation') }}">En savoir plus sur la modération.</a></p>
                 {{ form_row(form.text) }}
             </div>
             <button class="submit-btn btn btn-blue" type="submit">Envoyer</button>

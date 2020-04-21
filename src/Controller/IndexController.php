@@ -98,7 +98,7 @@ class IndexController extends AbstractController
     }
 
     /**
-     * @Route("chaudoudoux/{id}", name="app_chaudoudoux")
+     * @Route("/chaudoudoux/{id}", name="app_chaudoudoux")
      */
     public function chaudoudoux(EntityManagerInterface $em, $id){
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
@@ -116,6 +116,20 @@ class IndexController extends AbstractController
             $this->addFlash('error', "Vous n'êtes pas le destinataire de ce chaudoudoux");
             return $this->redirectToRoute('app_homepage_loggedin');
         }
+    }
+
+    /**
+     * @Route("/moderation", name="app_moderation")
+     */
+    public function moderation(){
+        return $this->render("content/moderation.html.twig");
+    }
+
+    /**
+     * @Route("/reversement-des-benefices", name="app_benefices")
+     */
+    public function benefices(){
+        return $this->render("content/benefices.html.twig");
     }
 
     /**
