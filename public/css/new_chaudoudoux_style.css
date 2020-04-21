@@ -26,8 +26,34 @@ form label{
     font-size: 16px;
 }
 
+#chaudoudoux_image_bis{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-row-gap: 15px;
+
+    border: 1px solid #BABABA;
+    border-radius: 3px;
+
+    padding: 10px;
+    margin-top: 10px;
+}
+
 #chaudoudoux_image_bis img{
     width: 100px;
+    height: 66px;
+}
+
+.input-image-container{
+    margin-right: 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-image-container input{
+    margin-right: 15px;
 }
 
 

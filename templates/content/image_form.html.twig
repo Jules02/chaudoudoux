@@ -1,0 +1,35 @@
+{% set images = [
+    'adam.jpg',
+    'arouf.jpg',
+    'bebe-yoda.jpg',
+    'escobar.jpg',
+    'hamon.jpg',
+    'hamon2.jpg',
+    'illustration.jpg',
+    'joconde-masque.jpg',
+    'keanu.jpg',
+    'liberte-delacroix.jpg',
+    'logo1.jpg',
+    'logo2.jpg',
+    'logo3.jpg',
+    'logo4.jpg',
+    'lycee.jpg',
+    'lycee-air.jpg',
+    'melenchon.jpg',
+    'restez-chez-vous.jpg',
+    'social-distancing.jpg',
+    'star-wars.jpg',
+    'stonks.jpg',
+    'think.jpg',
+    'vacances-ete.jpg',
+    'vitruve.jpg',
+    'yvick.jpg'
+] %}
+
+{% for image in images %}
+    <div class="input-image-container">
+        <input type="radio" id="chaudoudoux_image_{{ loop.index - 1 }}" name="chaudoudoux[image]" required="required" value="{{ image }}">
+        <label for="chaudoudoux_image_{{ loop.index - 1 }}" class="required"><img src="{{ asset('img/chaudoudoux/' ~ image) }}" alt="Image chaudoudoux"/></label>
+    </div>
+{% endfor %}
+

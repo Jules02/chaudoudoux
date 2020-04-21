@@ -19,10 +19,7 @@
                 <label class="image-label">Choisissez une image</label>
                 <div>
                     <div id="chaudoudoux_image_bis" class="image-field">
-                        <input type="radio" id="chaudoudoux_image_0" name="chaudoudoux[image]" required="required" value="star-wars.jpg">
-                        <label for="chaudoudoux_image_0" class="required"><img src="{{ asset('img/star-wars.jpg') }}" alt="Image Star Wars"/></label>
-                        <input type="radio" id="chaudoudoux_image_1" name="chaudoudoux[image]" required="required" value="lycee.jpg">
-                        <label for="chaudoudoux_image_1" class="required"><img src="{{ asset('img/lycee.jpg') }}" alt="Image Lycée"/></label>
+                        {% include 'content/image_form.html.twig' %}
                     </div>
                 </div>
                 {{ form_errors(form.image) }}
@@ -38,5 +35,4 @@
 {% endblock %}
 
 {% block javascripts %}
-
 {% endblock %}
