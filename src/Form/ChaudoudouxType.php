@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Chaudoudoux;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -15,13 +16,7 @@ class ChaudoudouxType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('toUser', TextType::class, [
-                'label'  => false,
-                'attr' => array(
-                    'class' => 'toUser-field',
-                    'placeholder' => "Choisissez un élève, enseignant, personnel de l'administration, du lycée, etc."
-                ),
-            ])
+            ->add('toUser', HiddenType::class)
             ->add('image', ChoiceType::class, [
                 'label'  => false,
                 'attr' => array(

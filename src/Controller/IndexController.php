@@ -204,6 +204,18 @@ class IndexController extends AbstractController
             return $this->redirectToRoute('app_profil', array('username' => $user->getUsername()));
         }
 
+
+        $repository = $em->getRepository(User::class);
+        $users = $repository->findAll();
+        $usersLength = count($users);
+        $fullNames = array();
+        for($i = 0; $i <=  $usersLength - 1; $i++){
+            $firstName = $users[$i]->getFirstName();
+            $lastName = $users[$i]->getLastName();
+            $fullName = $firstName . ' ' . $lastName;
+            array_push($fullNames, $fullName);
+        }
+
         $chaudoudoux = new Chaudoudoux();
 
         $form = $this->createForm(ChaudoudouxType::class, $chaudoudoux);
@@ -230,6 +242,7 @@ class IndexController extends AbstractController
 
         return $this->render("content/new_chaudoudoux.html.twig",[
             'form' => $form->createView(),
+            'users' => $fullNames
         ]);
     }
 

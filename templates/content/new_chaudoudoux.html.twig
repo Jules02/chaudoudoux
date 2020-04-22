@@ -67,10 +67,7 @@
         };
     };
 
-    var names = [
-        'Jules Dupont', 'Zoé Wintrebert', 'Yona Bohanna', 'Denis Croitoru', 'Esther Malaval',
-        'Aglaée Lamour-Loubières', 'Swan Pezin', 'Ewen NDoassingar', 'Garance Dupont', 'Lucas Valencia',
-    ];
+    var names = {{ users|json_encode|raw }};
 
     $('#the-basics .typeahead').typeahead({
             hint: true,
@@ -81,6 +78,10 @@
             name: 'names',
             source: substringMatcher(names)
         });
+
+    $('.typeahead').bind('typeahead:select', function(ev, suggestion) {
+        document.getElementById('chaudoudoux_toUser').value = suggestion.replace(/\s+/g, '.').replace("-", '').replace("'", '').normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+    });
 </script>
 
 {% endblock %}
