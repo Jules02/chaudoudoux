@@ -34,64 +34,66 @@
 {% endblock %}
 
 {% block javascripts %}
-    var chaudoudouxBack = document.getElementById("chaudoudoux-back");
-    var chaudoudouxFront = document.getElementById("chaudoudoux-front");
-    var flipButton = document.getElementById("flip-button")
+    <script>
+        var chaudoudouxBack = document.getElementById("chaudoudoux-back");
+        var chaudoudouxFront = document.getElementById("chaudoudoux-front");
+        var flipButton = document.getElementById("flip-button")
 
-    var state = 0 /* 0=back 1=front */
+        var state = 0 /* 0=back 1=front */
 
 
-    chaudoudouxFront.style.height = chaudoudouxBack.offsetHeight + 'px';
+        chaudoudouxFront.style.height = chaudoudouxBack.offsetHeight + 'px';
 
-    chaudoudouxBack.onclick = function(){
-        chaudoudouxBack.style.display = "none";
-        chaudoudouxFront.style.display = "block";
-        state = 1;
-    };
+        chaudoudouxBack.onclick = function(){
+            chaudoudouxBack.style.display = "none";
+            chaudoudouxFront.style.display = "block";
+            state = 1;
+        };
 
-    chaudoudouxFront.onclick = function(){
-        chaudoudouxFront.style.display = "none";
-        chaudoudouxBack.style.display = "block";
-
-        state = 0;
-    };
-
-    flipButton.onclick = function(){
-        if(state === 1){
+        chaudoudouxFront.onclick = function(){
             chaudoudouxFront.style.display = "none";
             chaudoudouxBack.style.display = "block";
 
             state = 0;
-        }else{
-            chaudoudouxBack.style.display = "none";
-            chaudoudouxFront.style.display = "block";
+        };
 
-            state = 1;
+        flipButton.onclick = function(){
+            if(state === 1){
+                chaudoudouxFront.style.display = "none";
+                chaudoudouxBack.style.display = "block";
+
+                state = 0;
+            }else{
+                chaudoudouxBack.style.display = "none";
+                chaudoudouxFront.style.display = "block";
+
+                state = 1;
+            }
+        };
+
+
+
+        var creditsAlert = document.getElementById("credits-alert");
+        var creditsAlert_exit= document.getElementById("credits-alert-exit");
+        var creditsAlertWrapper = document.getElementById("credits-alert-wrapper");
+
+        creditsAlert.onclick = function(){
+        creditsAlertWrapper.style.display = "flex";
+        };
+
+        creditsAlert_exit.onclick = function(){
+        creditsAlertWrapper.style.display = "none";
+        };
+
+
+        document.onkeydown = function(evt) {
+        var isEscape = false;
+        if ("key" in evt) {
+        isEscape = (evt.key === "Escape" || evt.key === "Esc");
         }
-    };
-
-
-
-    var creditsAlert = document.getElementById("credits-alert");
-    var creditsAlert_exit= document.getElementById("credits-alert-exit");
-    var creditsAlertWrapper = document.getElementById("credits-alert-wrapper");
-
-    creditsAlert.onclick = function(){
-    creditsAlertWrapper.style.display = "flex";
-    };
-
-    creditsAlert_exit.onclick = function(){
-    creditsAlertWrapper.style.display = "none";
-    };
-
-
-    document.onkeydown = function(evt) {
-    var isEscape = false;
-    if ("key" in evt) {
-    isEscape = (evt.key === "Escape" || evt.key === "Esc");
-    }
-    if (isEscape) {
-    creditsAlertWrapper.style.display = "none";
-    }
-    };
+        if (isEscape) {
+        creditsAlertWrapper.style.display = "none";
+        }
+        };
+    </script>
 {% endblock %}

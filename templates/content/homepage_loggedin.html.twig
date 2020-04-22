@@ -62,26 +62,28 @@
 {% endblock %}
 
 {% block javascripts %}
-    var creditsAlert = document.getElementById("credits-alert");
-    var creditsAlert_exit= document.getElementById("credits-alert-exit");
-    var creditsAlertWrapper = document.getElementById("credits-alert-wrapper");
+    <script>
+        var creditsAlert = document.getElementById("credits-alert");
+        var creditsAlert_exit= document.getElementById("credits-alert-exit");
+        var creditsAlertWrapper = document.getElementById("credits-alert-wrapper");
 
-    creditsAlert.onclick = function(){
-        creditsAlertWrapper.style.display = "flex";
-    };
+        creditsAlert.onclick = function(){
+            creditsAlertWrapper.style.display = "flex";
+        };
 
-    creditsAlert_exit.onclick = function(){
-        creditsAlertWrapper.style.display = "none";
-    };
+        creditsAlert_exit.onclick = function(){
+            creditsAlertWrapper.style.display = "none";
+        };
 
 
-    document.onkeydown = function(evt) {
-    var isEscape = false;
-    if ("key" in evt) {
-        isEscape = (evt.key === "Escape" || evt.key === "Esc");
-    }
-    if (isEscape) {
-        creditsAlertWrapper.style.display = "none";
-    }
-    };
+        document.onkeydown = function(evt) {
+        var isEscape = false;
+        if ("key" in evt) {
+            isEscape = (evt.key === "Escape" || evt.key === "Esc");
+        }
+        if (isEscape) {
+            creditsAlertWrapper.style.display = "none";
+        }
+        };
+    </script>
 {% endblock %}

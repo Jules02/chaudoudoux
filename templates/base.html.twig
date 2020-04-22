@@ -57,15 +57,16 @@
         </section>
 
         <script>
-            window.onload = function(){
+            window.onload = function() {
                 var contentWrapper = document.getElementById("content-wrapper");
                 var fullContentHeight = contentWrapper.offsetHeight + 172;
 
-                if(fullContentHeight <= window.innerHeight){
+                if (fullContentHeight <= window.innerHeight) {
                     document.getElementById("fullcontent-wrapper").style.height = "100vh";
                 }
-        {% block javascripts %}{% endblock %}
             }
         </script>
+
+        {% block javascripts %}{% endblock %}
     </body>
 </html>
