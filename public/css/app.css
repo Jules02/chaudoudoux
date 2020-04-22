@@ -1,7 +1,7 @@
 body{
     margin: 0;
     padding: 0;
-    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-family: 'Source Sans Pro', Arial, sans-serif;
 }
 
 *{
@@ -17,11 +17,11 @@ a{
     border-radius: 50px;
     box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.1);
 
-    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-family: 'Poppins', 'Source Sans Pro', Arial, sans-serif;
 }
 
 input{
-    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-family: 'Source Sans Pro', Arial, sans-serif;
 }
 
 button{
@@ -34,8 +34,7 @@ button{
     background: linear-gradient(90deg, rgba(52,152,219,1) 25%, rgba(66,170,240,1) 100%);
 
     color: white;
-    font-stretch: condensed;
-    font-weight: 800;
+    font-weight: 900;
     font-size: 22px;
     text-transform: uppercase;
 }
@@ -72,9 +71,10 @@ header h2{
 }
 
 header h1{
-    font-weight: bold;
+    font-weight: 700;
     font-size: 60px;
     line-height: 56px;
+    letter-spacing: -2px;
 
     margin: 0;
 }
@@ -84,12 +84,17 @@ header .profil{
     top: 30px;
     right: 30px;
 
-    padding: 15px;
+    width: 75px;
+    height: 75px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     background: rgb(52,152,219);
     background: linear-gradient(90deg, rgba(52,152,219,1) 25%, rgba(66,170,240,1) 100%);
     border: 3px solid rgba(52,152,219,1);
-    border-radius: 60px;
+    border-radius: 50px;
 
     color: white;
     font-size: 34px;
