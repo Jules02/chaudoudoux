@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="french">
     <head>
-        <meta charset="UTF-8">
+        <meta charset="UTF-8" name="viewport" content="width=device-width, maximum-scale=1"/>
         <title>{% block title %} | Chaudoudoux{% endblock %}</title>
         {% block stylesheets %}
             <link rel="stylesheet" href="{{ asset('css/app.css') }}">
@@ -10,6 +10,7 @@
         {% endblock %}
     </head>
     <body>
+        <section class="desktop">
         <div class="page-container">
             <div class="fullcontent-wrapper" id="fullcontent-wrapper">
             <header>
@@ -41,6 +42,19 @@
                 <p class="copyright">© 2020 MDL</p>
             </footer>
         </div>
+        </section>
+
+        <section class="mobile">
+            <div class="mobile-header">
+                <img src="{{ asset('img/logo-mobile.png') }}" alt="Logo lycée" class="mobile-logo-lycee"/>
+                <div class="mobile-title title">
+                    <h2>Maison des Lycéens du Lycée Européen</h2>
+                    <h1>Chaudoudoux</h1>
+                </div>
+            </div>
+
+            <p class="mobile-unavailable">Malheureusement, la plateforme de chaudoudoux n'est accessible que sur ordinateur 😕</p>
+        </section>
 
         <script>
             window.onload = function(){
