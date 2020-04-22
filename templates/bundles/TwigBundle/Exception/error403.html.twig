@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Erreur 404{{ parent() }}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/errors_style.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="content-wrapper" id="content-wrapper">
+        <h3 class="error-title">Erreur 403</h3>
+        <p class="error-p">Veuillez contacter la MDL</p>
+        <a href="{{ path('app_homepage') }}" class="error-a">Retourner à l'accueil</a>
+    </div>
+{% endblock %}
+
+{% block javascripts %}{% endblock %}
