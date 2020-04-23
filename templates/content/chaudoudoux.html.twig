@@ -11,13 +11,13 @@
     <div class="content-wrapper" id="content-wrapper">
         <div class="content-subwrapper">
             <h3 class="content-title">Nouveau chaudoudoux</h3>
-            <p class="chaudoudoux-from">De: <span>{% for name in chaudoudoux.fromUser|split('.') %}{{ name|capitalize }} {% endfor %}</span></p>
+            <p class="chaudoudoux-from">De: <span>{{ chaudoudoux.fromUserFull }}</span></p>
             <p class="chaudoudoux-date">Le {{ chaudoudoux.publishedAt|date('d', 'Europe/Paris') }} mai à {{ chaudoudoux.publishedAt|date('H:i', 'Europe/Paris') }}</p>
             <div class="chaudoudoux-back chaudoudoux-side" id="chaudoudoux-back">
                 <img src="{{ asset("img/chaudoudoux/" ~ chaudoudoux.image) }}" alt="Image chaudoudoux" class="image-chaudoudoux"/>
             </div>
             <div class="chaudoudoux-front chaudoudoux-side" id="chaudoudoux-front">
-                <p class="chaudoudoux-front-to">À: <span>{{ chaudoudoux.toUser }}</span></p>
+                <p class="chaudoudoux-front-to">À: <span>{{ chaudoudoux.toUserFull }}</span></p>
                 <p class="chaudoudoux-front-text">{{ chaudoudoux.text }}</p>
             </div>
             <button class="flip-button" id="flip-button"><img src="{{ asset('img/flip.png') }}" alt="Icône flip"/></button>

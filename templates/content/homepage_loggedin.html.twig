@@ -15,8 +15,7 @@
                     <h3>Derniers chaudoudoux</h3>
                     <ul>
                    {% for chaudoudoux in lastChaudoudoux %}
-                       {% set fullName %}{% for name in chaudoudoux.toUser|split('.') %}{{ name|capitalize }} {% endfor %}{% endset %}
-                        <li>{{ fullName|trim(' ', 'right') }}<span>, à {{ chaudoudoux.publishedAt|date('H:i', 'Europe/Paris') }}</span></li>
+                        <li>{{ chaudoudoux.toUserFull }}<span>, à {{ chaudoudoux.publishedAt|date('H:i', 'Europe/Paris') }}</span></li>
                     {% endfor %}
                     </ul>
                 </div>

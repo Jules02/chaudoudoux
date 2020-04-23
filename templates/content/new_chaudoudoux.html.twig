@@ -81,6 +81,7 @@
 
     $('.typeahead').bind('typeahead:select', function(ev, suggestion) {
         document.getElementById('chaudoudoux_toUser').value = suggestion.replace(/\s+/g, '.').replace("-", '').replace("'", '').normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+        document.getElementById('chaudoudoux_toUserFull').value = suggestion;
     });
 </script>
 

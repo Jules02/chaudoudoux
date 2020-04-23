@@ -17,6 +17,7 @@ class ChaudoudouxType extends AbstractType
     {
         $builder
             ->add('toUser', HiddenType::class)
+            ->add('toUserFull', HiddenType::class)
             ->add('image', ChoiceType::class, [
                 'label'  => false,
                 'attr' => array(

@@ -51,6 +51,16 @@ class Chaudoudoux
      */
     private $fromUserClasse;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $fromUserFull;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $toUserFull;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -136,6 +146,30 @@ class Chaudoudoux
     public function setFromUserClasse(?string $fromUserClasse): self
     {
         $this->fromUserClasse = $fromUserClasse;
+
+        return $this;
+    }
+
+    public function getFromUserFull(): ?string
+    {
+        return $this->fromUserFull;
+    }
+
+    public function setFromUserFull(string $fromUserFull): self
+    {
+        $this->fromUserFull = $fromUserFull;
+
+        return $this;
+    }
+
+    public function getToUserFull(): ?string
+    {
+        return $this->toUserFull;
+    }
+
+    public function setToUserFull(string $toUserFull): self
+    {
+        $this->toUserFull = $toUserFull;
 
         return $this;
     }

@@ -224,10 +224,17 @@ class IndexController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $chaudoudoux = $form->getData();
 
+            $data = $form->getData();
+
             $chaudoudoux->setFromUser($this->getUser()->getUsername());
             $chaudoudoux->setPublishedAt(new \DateTime());
             $chaudoudoux->setSeen(0);
             $chaudoudoux->setFromUserClasse($this->getUser()->getClasse());
+
+            $firstName = $this->getUser()->getFirstName();
+            $lastName = $this->getUser()->getLastName();
+            $fullName = $firstName . ' ' . $lastName;
+            $chaudoudoux->setFromUserFull($fullName);
 
             $credits = $user->getCredits();
             $user->setCredits($credits - 1);
@@ -278,11 +285,12 @@ class IndexController extends AbstractController
      */
     public function newUser(EntityManagerInterface $em, UserPasswordEncoderInterface $passwordEncoder){
         $user = new User();
-        $user->setUsername("annie.picard")
-            ->setFirstName("Annie")
-            ->setLastName("Picard")
-            ->setTitre("proviseure")
-            ->setCredits(0);
+        $user->setUsername("aglaee.lamourloubieres")
+            ->setFirstName("Aglaée")
+            ->setLastName("Lamour-Loubières")
+            ->setTitre("eleve")
+            ->setClasse("1E")
+            ->setCredits(4);
 
         $password = $passwordEncoder->encodePassword($user, "testmdp");
         $user->setPassword($password);
