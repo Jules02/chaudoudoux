@@ -20,9 +20,53 @@
             {% endif %}
         </p>
         <p class="credits">Chaudoudoux disponibles: <span>{{ app.user.credits }}</span></p>
-        <a href="#" class="buy-btn btn btn-blue">Acheter des chaudoudoux</a>
+
+
+        <button class="buy-btn btn btn-blue" id="buy-credits">Acheter des chaudoudoux</button>
         <a href="{{ path('app_logout') }}" class="logout-btn btn">Déconnexion</a>
+
+        <a href="{{ path('app_addCredits15') }}">Add</a>
+
+        <div class="buy-credits-wrapper" id="buy-credits-wrapper">
+            <div class="buy-credits-wrapperbis">
+                <button id="buy-credits-exit"></button>
+                <div class="buy-credits-content">
+                    <p class="buy-credits-info">Bénéfices intégralement reversés à nos hôpitaux. <a href="{{ path('app_benefices') }}">En savoir plus.</a></p>
+                    <p>Acheter 1 chaudoudoux</p>
+                    <iframe id="haWidgetButton" src="https://www.helloasso.com/associations/maison-des-lyceens-du-lycee-europeen/paiements/achat-d-un-chaudoudoux/widget-bouton" style="border: none;"></iframe>
+                    <p>Acheter 15 chaudoudoux</p>
+                    <iframe id="haWidgetButton" src="https://www.helloasso.com/associations/maison-des-lyceens-du-lycee-europeen/paiements/achat-de-5-chaudoudoux/widget-bouton" style="border: none;"></iframe>
+                    <p>Acheter 30 chaudoudoux</p>
+                    <iframe id="haWidgetButton" src="https://www.helloasso.com/associations/maison-des-lyceens-du-lycee-europeen/paiements/achat-de-30-chaudoudoux/widget-bouton" style="border: none;"></iframe>
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}
 
-{% block javascripts %}{% endblock %}
+{% block javascripts %}
+    <script>
+        var buyCredits = document.getElementById("buy-credits");
+        var buyCredits_exit = document.getElementById("buy-credits-exit");
+        var buyCreditsWrapper = document.getElementById("buy-credits-wrapper");
+
+        buyCredits.onclick = function(){
+            buyCreditsWrapper.style.display = "flex";
+        };
+
+        buyCredits_exit.onclick = function(){
+            buyCreditsWrapper.style.display = "none";
+        };
+
+
+        document.onkeydown = function(evt) {
+            var isEscape = false;
+            if ("key" in evt) {
+                isEscape = (evt.key === "Escape" || evt.key === "Esc");
+            }
+            if (isEscape) {
+                buyCreditsWrapper.style.display = "none";
+            }
+        };
+    </script>
+{% endblock %}

@@ -224,8 +224,6 @@ class IndexController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $chaudoudoux = $form->getData();
 
-            $data = $form->getData();
-
             $chaudoudoux->setFromUser($this->getUser()->getUsername());
             $chaudoudoux->setPublishedAt(new \DateTime());
             $chaudoudoux->setSeen(0);
@@ -302,22 +300,6 @@ class IndexController extends AbstractController
             'Voilà ! Nouveau user id: #%d nom: %s',
             $user->getId(),
             $user->getFirstName()
-        ));
-    }
-
-    /**
-     * @Route("/addCredits", name="app_addCredits")
-     */
-    public function addCredits(EntityManagerInterface $em){
-        $user = $this->getUser();
-        $credits = $user->getCredits();
-        $user->setCredits($credits + 1);
-
-        $em->persist($user);
-        $em->flush();
-
-        return new Response(sprintf(
-            'Voilà ! + un crédit'
         ));
     }
 }
