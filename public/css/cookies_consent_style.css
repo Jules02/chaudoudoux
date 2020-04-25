@@ -1,0 +1,36 @@
+.cookies-container{
+    position: fixed;
+    bottom: 0;
+
+    background: rgb(52,152,219);
+    background: linear-gradient(90deg, rgba(52,152,219,1) 25%, rgba(66,170,240,1) 100%);
+    width: 100%;
+    height: 45px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cookies-p{
+    margin-left: 25px;
+    color: #fff;
+}
+
+.cookies-p a{
+    text-decoration: underline;
+}
+
+.cookies-close{
+    background-color: #fff;
+    border-radius: 3px;
+
+    padding: 5px 10px;
+    margin-right: 25px;
+
+    display: flex;
+    justify-content: center;
+
+    color: #3498DB;
+    font-size: 16px;
+}
