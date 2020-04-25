@@ -23,6 +23,17 @@
 
 
         <button class="buy-btn btn btn-blue" id="buy-credits">Acheter des chaudoudoux</button>
+
+        <h4 class="chaudoudoux-sent-title">Mes chaudoudoux envoyés</h4>
+        {% for chaudoudoux in chaudoudoux %}
+            <a href="{{ path('app_chaudoudoux', {'id': chaudoudoux.id}) }}" class="chaudoudoux-wrapper">
+                {% if chaudoudoux.seen == 1 %}
+                    <span class="chaudoudoux-seen">Vu</span>
+                {% endif %}
+                À: <span class="chaudoudoux-from">{{ chaudoudoux.toUserFull }}</span><span class="chaudoudoux-date">, le {{ chaudoudoux.publishedAt|date('d', 'Europe/Paris') }} mai à {{ chaudoudoux.publishedAt|date('H:i', 'Europe/Paris') }}</span>
+            </a>
+        {% endfor %}
+
         <a href="{{ path('app_logout') }}" class="logout-btn btn">Déconnexion</a>
 
         <div class="buy-credits-wrapper" id="buy-credits-wrapper">
@@ -35,7 +46,7 @@
                     <p>Acheter 15 chaudoudoux</p>
                     <iframe id="haWidgetButton" src="https://www.helloasso.com/associations/maison-des-lyceens-du-lycee-europeen/paiements/achat-de-5-chaudoudoux/widget-bouton" style="border: none;"></iframe>
                     <p>Acheter 30 chaudoudoux</p>
-                    <iframe id="haWidgetButton" src="https://www.helloasso.com/associations/maison-des-lyceens-du-lycee-europeen/paiements/achat-de-30-chaudoudoux/widget-bouton" style="border: none;"></iframe>
+                    <iframe id="haWidgetButton" src="https://www.helloasso.com/associations/maison-des-lyceens-du-lycee-europeen/paiements/achat-de-30-chaudoudoux/widget-bouton" style="border: none;"></iframe></iframe>
                     <p>Vous avez aussi la possibilité de faire un don (montant libre)</p>
                     <iframe id="haWidget" allowtransparency="true" src="https://www.helloasso.com/associations/maison%20des%20lyceens%20du%20lycee%20europeen/collectes/collecte-de-dons-de-la-mdl-pour-les-hopitaux/widget-bouton" style="width:100%;height:70px;border:none;"></iframe>
                 </div>

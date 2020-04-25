@@ -119,12 +119,17 @@ class IndexController extends AbstractController
     /**
      * @Route("/profil/{username}", name="app_profil")
      */
-    public function profil($username){
+    public function profil($username, EntityManagerInterface $em){
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
 
         $user = $this->getUser();
         if($user->getUsername() === $username){
-            return $this->render('content/profil.html.twig');
+            $repository = $em->getRepository(Chaudoudoux::class);
+            $chaudoudoux = $repository->findByUser($username);
+
+            return $this->render('content/profil.html.twig', array(
+                'chaudoudoux' => $chaudoudoux
+            ));
         }else{
             return $this->redirectToRoute('app_homepage_loggedin');
         }
@@ -166,7 +171,7 @@ class IndexController extends AbstractController
         $em->persist($chaudoudoux);
         $em->flush();
 
-        if($username == $chaudoudoux->getToUser()){
+        if($username == $chaudoudoux->getToUser() or $chaudoudoux->getFromUser()){
             return $this->render("content/chaudoudoux.html.twig", [
                 'chaudoudoux' => $chaudoudoux
             ]);

@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/register_style.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="content-wrapper" id="content-wrapper">
+        <h1>Inscription</h1>
+
+        {{ form_start(registrationForm) }}
+            {{ form_row(registrationForm.username) }}
+            {{ form_row(registrationForm.plainPassword) }}
+            {{ form_row(registrationForm.firstName) }}
+            {{ form_row(registrationForm.lastName) }}
+            {{ form_row(registrationForm.titre) }}
+            {{ form_row(registrationForm.classe) }}
+
+            <button>Inscription</button>
+        {{ form_end(registrationForm) }}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        var passwordField = document.getElementById('registration_form_plainPassword')
+
+        passwordField.onclick = function() {
+            var password = Math.random().toString(36).slice(-8)
+            passwordField.value = password;
+            textToClipboard(password);
+        };
+
+        function textToClipboard (text) {
+            var dummy = document.createElement("textarea");
+            document.body.appendChild(dummy);
+            dummy.value = text;
+            dummy.select();
+            document.execCommand("copy");
+            document.body.removeChild(dummy);
+        }
+    </script>
+{% endblock %}

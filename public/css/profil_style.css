@@ -1,5 +1,5 @@
 .content-wrapper{
-    padding-left: 50px;
+    margin: 0 50px;
 }
 
 .profil-title{
@@ -42,7 +42,7 @@
     display: block;
     width: 494px;
     padding: 15px 0 15px 50px;
-    margin-top: 30px;
+    margin-top: 50px;
 }
 
 
@@ -96,8 +96,6 @@
     justify-content: center;
 }
 
-
-
 #buy-credits-exit{
     display: block;
 
@@ -109,4 +107,60 @@
 
     margin: 10px;
     padding: 0;
+}
+
+
+
+
+.chaudoudoux-sent-title{
+    font-weight: 600;
+    font-size: 22px;
+
+    margin: 30px 0 15px;
+}
+
+.chaudoudoux-wrapper{
+    display: block;
+    width: 100%;
+
+    background: none;
+
+
+    color: #3498DB;
+    font-weight: 200;
+
+    border-radius: 50px;
+    border: 3px solid #3498DB;
+
+    box-sizing: border-box;
+
+    padding: 10px 25px;
+
+    margin-bottom: 10px;
+}
+
+.chaudoudoux-seen{
+    padding: 5px 10px;
+    border: 3px solid #50d890;
+    border-radius: 30px;
+
+    color: #50d890;
+    font-weight: 600;
+    font-size: 12px;
+
+    background-color: rgba(80, 216, 144, 0.1);
+
+    position: relative;
+    top: -1px;
+
+    margin-right: 15px;
+}
+
+.chaudoudoux-from{
+    font-weight: 500;
+}
+
+.chaudoudoux-date{
+    font-weight: 300;
+    font-style: italic;
 }
