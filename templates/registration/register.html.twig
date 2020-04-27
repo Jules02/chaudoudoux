@@ -26,12 +26,19 @@
 
 {% block javascripts %}
     <script>
-        var passwordField = document.getElementById('registration_form_plainPassword')
+        var usernameField = document.getElementById('registration_form_username');
+        var passwordField = document.getElementById('registration_form_plainPassword');
+        var firstNameField = document.getElementById('registration_form_firstName');
+        var lastNameField = document.getElementById('registration_form_lastName');
 
         passwordField.onclick = function() {
-            var password = Math.random().toString(36).slice(-8)
+            var password = Math.random().toString(36).slice(-8);
             passwordField.value = password;
             textToClipboard(password);
+
+            var username = usernameField.value.split('.');
+            firstNameField.value = capitalizeFirstLetter(username[0]);
+            lastNameField.value = capitalizeFirstLetter(username[1]);
         };
 
         function textToClipboard (text) {
@@ -41,6 +48,10 @@
             dummy.select();
             document.execCommand("copy");
             document.body.removeChild(dummy);
+        }
+
+        function capitalizeFirstLetter(string) {
+            return string.charAt(0).toUpperCase() + string.slice(1);
         }
     </script>
 {% endblock %}

@@ -13,3 +13,7 @@
     text-align: justify;
     line-height: 24px;
 }
+
+.benefices-text a{
+    text-decoration: underline;
+}

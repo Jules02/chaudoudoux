@@ -22,7 +22,7 @@ class RegistrationFormType extends AbstractType
                 'label' => 'Nom d\'utilisateur (prenom.nom sans aucun accent en miniscule, traits d\'unions et apostrophes supprimés ex. Léa Martin-Petit devient lea.martinpetit)'
             ])
             ->add('firstName', TextType::class, [
-                'label' => 'Prénom (normal, avec majuscule au début et accents)'
+                'label' => 'Prénom (normal, avec majuscule au début et accents) -> se génére seul aussi mais attention aux accents ou aux traits d\'unions'
             ])
             ->add('lastName', TextType::class, [
                 'label' => 'Nom (pareil)'

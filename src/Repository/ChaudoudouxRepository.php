@@ -42,7 +42,6 @@ class ChaudoudouxRepository extends ServiceEntityRepository
             ->andWhere('c.seen = :val2')
             ->setParameter('val2', 0)
             ->orderBy('c.id', 'DESC')
-            ->setMaxResults(10)
             ->getQuery()
             ->getResult();
     }
@@ -58,7 +57,6 @@ class ChaudoudouxRepository extends ServiceEntityRepository
             ->andWhere('c.seen = :val2')
             ->setParameter('val2', 1)
             ->orderBy('c.id', 'DESC')
-            ->setMaxResults(10)
             ->getQuery()
             ->getResult();
     }
@@ -83,6 +81,7 @@ class ChaudoudouxRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('c')
             ->andWhere('c.fromUser = :val')
             ->setParameter('val', $username)
+            ->orderBy('c.id', 'DESC')
             ->getQuery()
             ->getResult();
     }
