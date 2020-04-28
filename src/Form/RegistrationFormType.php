@@ -41,7 +41,7 @@ class RegistrationFormType extends AbstractType
                 'required' => false,
             ))
             ->add('plainPassword', PasswordType::class, [
-                'label' => 'Mot de passe (cliquer sur le champ, il se génére tout seul et il est déjà copié dans le presse-papier',
+                'label' => 'Mot de passe (déjà copié dans le presse papier)',
                 'mapped' => false,
                 'constraints' => [
                     new NotBlank([

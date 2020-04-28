@@ -25,14 +25,18 @@
         <button class="buy-btn btn btn-blue" id="buy-credits">Acheter des chaudoudoux</button>
 
         <h4 class="chaudoudoux-sent-title">Mes chaudoudoux envoyés</h4>
-        {% for chaudoudoux in chaudoudoux %}
-            <a href="{{ path('app_chaudoudoux', {'id': chaudoudoux.id}) }}" class="chaudoudoux-wrapper">
-                {% if chaudoudoux.seen == 1 %}
-                    <span class="chaudoudoux-seen">Vu</span>
-                {% endif %}
-                À: <span class="chaudoudoux-from">{{ chaudoudoux.toUserFull }}</span><span class="chaudoudoux-date">, le {{ chaudoudoux.publishedAt|date('d', 'Europe/Paris') }} mai à {{ chaudoudoux.publishedAt|date('H:i', 'Europe/Paris') }}</span>
-            </a>
-        {% endfor %}
+        {% if chaudoudoux|length == 0 %}
+            <p>Vous n'avez toujours pas envoyé de chaudoudoux ! <a href="{{ path('app_newChaudoudoux') }}" class="noChaudoudouxSent-a">En envoyer un</a></p>
+        {% else %}
+            {% for chaudoudoux in chaudoudoux %}
+                <a href="{{ path('app_chaudoudoux', {'id': chaudoudoux.id}) }}" class="chaudoudoux-wrapper">
+                    {% if chaudoudoux.seen == 1 %}
+                        <span class="chaudoudoux-seen">Vu</span>
+                    {% endif %}
+                    À: <span class="chaudoudoux-from">{{ chaudoudoux.toUserFull }}</span><span class="chaudoudoux-date">, le {{ chaudoudoux.publishedAt|date('d', 'Europe/Paris') }} mai à {{ chaudoudoux.publishedAt|date('H:i', 'Europe/Paris') }}</span>
+                </a>
+            {% endfor %}
+        {% endif %}
 
         <a href="{{ path('app_logout') }}" class="logout-btn btn">Déconnexion</a>
 

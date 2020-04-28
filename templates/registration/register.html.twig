@@ -12,6 +12,10 @@
         <h1>Inscription</h1>
 
         {{ form_start(registrationForm) }}
+            <div>
+                <label for="nomListe">Coller ici le NOM Prénom depuis la liste -> appuyer ensuite sur le champ du nom d'utilisateur -> tout se génére automatiqument sauf la classe mais vérifier tout (pour le prénom et le nom les accents et les - se mettent pas -> le mot de passe est copié dans le presse papier -> le coller dans le sheet avec le nom d'utilisateur</label>
+                <input id="nomListe" type="text" name="nomListe"/>
+            </div>
             {{ form_row(registrationForm.username) }}
             {{ form_row(registrationForm.plainPassword) }}
             {{ form_row(registrationForm.firstName) }}
@@ -26,19 +30,23 @@
 
 {% block javascripts %}
     <script>
+        var nomListeField = document.getElementById('nomListe');
         var usernameField = document.getElementById('registration_form_username');
         var passwordField = document.getElementById('registration_form_plainPassword');
         var firstNameField = document.getElementById('registration_form_firstName');
         var lastNameField = document.getElementById('registration_form_lastName');
 
-        passwordField.onclick = function() {
+        usernameField.onclick = function() {
+            var nomComplet = nomListeField.value.split(" ");
+            var prenom = nomComplet[1];
+            var nom = capitalizeFirstLetter(nomComplet[0].toLowerCase());
             var password = Math.random().toString(36).slice(-8);
             passwordField.value = password;
             textToClipboard(password);
 
-            var username = usernameField.value.split('.');
-            firstNameField.value = capitalizeFirstLetter(username[0]);
-            lastNameField.value = capitalizeFirstLetter(username[1]);
+            usernameField.value = prenom.toLowerCase() + "." + nom.toLowerCase();
+            firstNameField.value = prenom;
+            lastNameField.value = nom;
         };
 
         function textToClipboard (text) {
