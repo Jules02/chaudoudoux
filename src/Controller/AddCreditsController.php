@@ -47,13 +47,13 @@ class AddCreditsController extends AbstractController
     }
 
     /**
-     * @Route("/obtenir-credits-15", name="app_addCredits15")
+     * @Route("/obtenir-credits-5", name="app_addCredits5")
      * @throws \Symfony\Component\Mailer\Exception\TransportExceptionInterface
      */
-    public function addCredits15(EntityManagerInterface $em, MailerInterface $mailer){
+    public function addCredits5(EntityManagerInterface $em, MailerInterface $mailer){
         $user = $this->getUser();
         $credits = $user->getCredits();
-        $user->setCredits($credits + 15);
+        $user->setCredits($credits + 5);
 
         $em->persist($user);
         $em->flush();
@@ -67,8 +67,8 @@ class AddCreditsController extends AbstractController
             ->from('contact@itinr.fr')
             ->to('julesdupont02@gmail.com')
             ->subject('Nouveaux chaudoudoux obtenus')
-        ->text($username . ' a obtenu 15 nouveaux chaudoudoux')
-            ->html('<p>' . $username . ' a obtenu 15 nouveaux chaudoudoux à ' . $stringDatetime . '</p>');
+        ->text($username . ' a obtenu 5 nouveaux chaudoudoux')
+            ->html('<p>' . $username . ' a obtenu 5 nouveaux chaudoudoux à ' . $stringDatetime . '</p>');
 
         $mailer->send($email);
 
@@ -78,13 +78,13 @@ class AddCreditsController extends AbstractController
     }
 
     /**
-     * @Route("/obtenir-credits-30", name="app_addCredits30")
+     * @Route("/obtenir-credits-20", name="app_addCredits20")
      * @throws \Symfony\Component\Mailer\Exception\TransportExceptionInterface
      */
-    public function addCredits30(EntityManagerInterface $em, MailerInterface $mailer){
+    public function addCredits20(EntityManagerInterface $em, MailerInterface $mailer){
         $user = $this->getUser();
         $credits = $user->getCredits();
-        $user->setCredits($credits + 30);
+        $user->setCredits($credits + 20);
 
         $em->persist($user);
         $em->flush();
@@ -98,8 +98,8 @@ class AddCreditsController extends AbstractController
             ->from('contact@itinr.fr')
             ->to('julesdupont02@gmail.com')
             ->subject('Nouveaux chaudoudoux obtenus')
-            ->text($username . ' a obtenu 30 nouveaux chaudoudoux')
-            ->html('<p>' . $username . ' a obtenu 30 nouveaux chaudoudoux à ' . $stringDatetime . '</p>');
+            ->text($username . ' a obtenu 20 nouveaux chaudoudoux')
+            ->html('<p>' . $username . ' a obtenu 20 nouveaux chaudoudoux à ' . $stringDatetime . '</p>');
 
         $mailer->send($email);
 

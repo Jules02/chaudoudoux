@@ -30,27 +30,30 @@
 
 {% block javascripts %}
     <script>
-        var nomListeField = document.getElementById('nomListe');
-        var usernameField = document.getElementById('registration_form_username');
-        var passwordField = document.getElementById('registration_form_plainPassword');
-        var firstNameField = document.getElementById('registration_form_firstName');
-        var lastNameField = document.getElementById('registration_form_lastName');
+        const nomListeField = document.getElementById('nomListe');
+        const usernameField = document.getElementById('registration_form_username');
+        const passwordField = document.getElementById('registration_form_plainPassword');
+        const firstNameField = document.getElementById('registration_form_firstName');
+        const lastNameField = document.getElementById('registration_form_lastName');
 
-        usernameField.onclick = function() {
-            var nomComplet = nomListeField.value.split(" ");
-            var prenom = nomComplet[1];
-            var nom = capitalizeFirstLetter(nomComplet[0].toLowerCase());
-            var password = Math.random().toString(36).slice(-8);
+        nomListeField.addEventListener('change', updateValue);
+
+        function updateValue(e) {
+            const nomComplet = e.target.value.split(" ");
+            const prenom = nomComplet[1];
+            const nom = capitalizeFirstLetter(nomComplet[0].toLowerCase());
+            const password = Math.random().toString(36).slice(-8);
             passwordField.value = password;
             textToClipboard(password);
 
-            usernameField.value = prenom.toLowerCase() + "." + nom.toLowerCase();
+            const username = prenom.toLowerCase() + "." + nom.toLowerCase().replace(/-/g, "");
+            usernameField.value = username.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
             firstNameField.value = prenom;
             lastNameField.value = nom;
-        };
+        }
 
         function textToClipboard (text) {
-            var dummy = document.createElement("textarea");
+            const dummy = document.createElement("textarea");
             document.body.appendChild(dummy);
             dummy.value = text;
             dummy.select();
