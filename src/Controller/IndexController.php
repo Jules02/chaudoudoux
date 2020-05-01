@@ -18,9 +18,9 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class IndexController extends AbstractController
 {
     const CLASSES = array(
-        '2A', '2B', '2C', '2D', '2E', '2F', '2H',
+        '2A', '2B', '2C', '2D', '2E', '2F', '2G',
         '1A', '1B', '1C', '1D', '1E', '1F',
-        'TL', 'TS1', 'TS2', 'TES1', 'TES2', 'TES3'
+        'TL', 'TS1', 'TS2', 'TS3', 'TES1', 'TES2', 'TES3'
     );
 
     /**
