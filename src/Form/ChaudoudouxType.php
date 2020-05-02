@@ -48,7 +48,13 @@ class ChaudoudouxType extends AbstractType
                     'Photo respectful meme' => 'think.jpg',
                     'Photo vacances été' => 'vacances-ete.jpg',
                     'Photo Vitruve' => 'vitruve.jpg',
-                    'Photo Yvick' => 'yvick.jpg'
+                    'Photo Yvick' => 'yvick.jpg',
+                    'Photo OSS 117' => 'oss117.jpg',
+                    'Photo Comrade' => 'comrade.jpg',
+                    'Photo ne lachez rien' => 'ne-lachez-rien.jpg',
+                    'Photo Jul' => 'jul.jpg',
+                    'Photo Oneal' => 'oneal.jpg'
+
                 ],
                 'expanded' => true,
                 'multiple' => false
