@@ -1,3 +1,28 @@
+.soon{
+    display: flex !important;
+}
+
+.soon-wrapper{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+
+    width: 50%;
+    height: 50vh;
+
+    background: rgb(52,152,219);
+    background: linear-gradient(90deg, rgba(52,152,219,1) 25%, rgba(66,170,240,1) 100%);
+
+    color: white;
+    font-family: 'Poppins', 'Source Sans Pro', Arial, sans-serif;
+    font-size: 32px;
+
+    border-radius: 10px !important;
+}
+
+
+
+
 body{
     overflow-x: hidden;
 }

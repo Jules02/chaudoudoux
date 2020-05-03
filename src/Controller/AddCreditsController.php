@@ -21,6 +21,11 @@ class AddCreditsController extends AbstractController
      */
     public function addCredit(EntityManagerInterface $em, MailerInterface $mailer){
         $user = $this->getUser();
+        if(!$user){
+            $this->addFlash('error', "Vous n'êtes pas connecté");
+
+            return $this->redirectToRoute('app_homepage');
+        }
         $credits = $user->getCredits();
         $user->setCredits($credits + 1);
 
@@ -52,6 +57,11 @@ class AddCreditsController extends AbstractController
      */
     public function addCredits5(EntityManagerInterface $em, MailerInterface $mailer){
         $user = $this->getUser();
+        if(!$user){
+            $this->addFlash('error', "Vous n'êtes pas connecté");
+
+            return $this->redirectToRoute('app_homepage');
+        }
         $credits = $user->getCredits();
         $user->setCredits($credits + 5);
 
@@ -83,6 +93,11 @@ class AddCreditsController extends AbstractController
      */
     public function addCredits20(EntityManagerInterface $em, MailerInterface $mailer){
         $user = $this->getUser();
+        if(!$user){
+            $this->addFlash('error', "Vous n'êtes pas connecté");
+
+            return $this->redirectToRoute('app_homepage');
+        }
         $credits = $user->getCredits();
         $user->setCredits($credits + 20);
 
