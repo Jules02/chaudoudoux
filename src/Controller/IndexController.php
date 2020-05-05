@@ -176,7 +176,7 @@ class IndexController extends AbstractController
         $repository = $em->getRepository(Chaudoudoux::class);
         $chaudoudoux = $repository->find($id);
 
-        if($chaudoudoux->getSeen() == 0){
+        if($chaudoudoux->getSeen() == 0 and $username == $chaudoudoux->getToUser()){
             $chaudoudoux->setSeen(1);
         }
 
