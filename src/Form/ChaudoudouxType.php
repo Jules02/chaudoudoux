@@ -28,7 +28,7 @@ class ChaudoudouxType extends AbstractType
                     'Photo Roi Arouf' => 'arouf.jpg',
                     'Photo Bébé Yoda' => 'bebe-yoda.jpg',
                     'Photo Pablo Escobar' => 'escobar.jpg',
-                    'Photo Hamon' => 'hamon.jpg',
+                    'Photo Balkany' => 'balkany.jpg',
                     'Photo Hamon 2' => 'hamon2.jpg',
                     'Illustration' => 'illustration.jpg',
                     'Photo Joconde masqué' => 'joconde-masque.jpg',
@@ -40,13 +40,13 @@ class ChaudoudouxType extends AbstractType
                     'Logo 4' => 'logo4.jpg',
                     'Photo lycée' => 'lycee.jpg',
                     'Photo lycée aérienne' => 'lycee-air.jpg',
-                    'Photo Mélenchon' => 'melenchon.jpg',
+                    'Photo Chirac' => 'chirac.jpg',
                     'Photo restez chez vous' => 'restez-chez-vous.jpg',
                     'Photo Social Distancing' => 'social-distancing.jpg',
                     'Photo Star wars' => 'star-wars.jpg',
                     'Photo Stonks' => 'stonks.jpg',
                     'Photo respectful meme' => 'think.jpg',
-                    'Photo vacances été' => 'vacances-ete.jpg',
+                    'Photo Balkany 2' => 'balkany2.jpg',
                     'Photo Vitruve' => 'vitruve.jpg',
                     'Photo Yvick' => 'yvick.jpg',
                     'Photo OSS 117' => 'oss117.jpg',
@@ -54,7 +54,6 @@ class ChaudoudouxType extends AbstractType
                     'Photo ne lachez rien' => 'ne-lachez-rien.jpg',
                     'Photo Jul' => 'jul.jpg',
                     'Photo Oneal' => 'oneal.jpg'
-
                 ],
                 'expanded' => true,
                 'multiple' => false

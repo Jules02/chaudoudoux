@@ -12,7 +12,7 @@
         <h3 class="classement-title">Classement complet par classe (par nombre de chaudoudoux envoyés)</h3>
         <ol class="classement">
         {% for key, value in chaudoudouxClasseRank %}
-            <li><span class="classement-classe-span">{{ key }}</span> <span>({{ value }} chaudoudoux envoyés)</span></li>
+            <li><span class="classement-classe-span">{% if key == "Ancien" %}Anciens{% else %}{{ key }}{% endif %}</span> <span>({{ value }} chaudoudoux envoyés)</span></li>
             <div class="classement-divider"></div>
         {% endfor %}
         </ol>

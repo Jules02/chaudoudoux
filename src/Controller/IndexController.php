@@ -20,7 +20,8 @@ class IndexController extends AbstractController
     const CLASSES = array(
         '2A', '2B', '2C', '2D', '2E', '2F', '2G',
         '1A', '1B', '1C', '1D', '1E', '1F',
-        'TL', 'TS1', 'TS2', 'TS3', 'TES1', 'TES2', 'TES3'
+        'TL', 'TS1', 'TS2', 'TS3', 'TES1', 'TES2', 'TES3',
+        'Ancien'
     );
 
     /**
@@ -32,23 +33,26 @@ class IndexController extends AbstractController
         if($user){
             return $this->redirectToRoute('app_homepage_loggedin');
         }
+        else{
+            // get the login error if there is one
+            $error = $authenticationUtils->getLastAuthenticationError();
+            if($error){
+                $this->addFlash('error', "Une erreur est survenue lors de votre connexion");
+            }
+            // last username entered by the user
+            $lastUsername = $authenticationUtils->getLastUsername();
 
-        // get the login error if there is one
-        $error = $authenticationUtils->getLastAuthenticationError();
-        if($error){
-            $this->addFlash('error', "Une erreur est survenue lors de votre connexion");
+            return $this->render('content/homepage.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
         }
-        // last username entered by the user
-        $lastUsername = $authenticationUtils->getLastUsername();
-
-        return $this->render('content/homepage.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
     }
 
     /**
      * @Route("/accueil", name="app_homepage_loggedin")
      */
     public function homepage_loggedin(EntityManagerInterface $em){
-        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        if(!$this->getUser()){
+            return $this->redirectToRoute('app_homepage');
+        }
 
         $repository = $em->getRepository(Chaudoudoux::class);
 
@@ -96,7 +100,9 @@ class IndexController extends AbstractController
      * @Route("/classement", name="app_classement")
      */
     public function classement(EntityManagerInterface $em){
-        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        if(!$this->getUser()){
+            return $this->redirectToRoute('app_homepage');
+        }
 
         $repository = $em->getRepository(Chaudoudoux::class);
 
@@ -120,7 +126,9 @@ class IndexController extends AbstractController
      * @Route("/profil/{username}", name="app_profil")
      */
     public function profil($username, EntityManagerInterface $em){
-        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        if(!$this->getUser()){
+            return $this->redirectToRoute('app_homepage');
+        }
 
         $user = $this->getUser();
         if($user->getUsername() === $username){
@@ -139,7 +147,9 @@ class IndexController extends AbstractController
      * @Route("mes-chaudoudoux", name="app_meschaudoudoux")
      */
     public function mesChaudoudoux(EntityManagerInterface $em){
-        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        if(!$this->getUser()){
+            return $this->redirectToRoute('app_homepage');
+        }
 
         $username = $this->getUser()->getUsername();
 
@@ -157,7 +167,9 @@ class IndexController extends AbstractController
      * @Route("/chaudoudoux/{id}", name="app_chaudoudoux")
      */
     public function chaudoudoux(EntityManagerInterface $em, $id){
-        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        if(!$this->getUser()){
+            return $this->redirectToRoute('app_homepage');
+        }
 
         $username = $this->getUser()->getUsername();
 
@@ -199,7 +211,9 @@ class IndexController extends AbstractController
      * @Route("/ecrire-chaudoudoux", name="app_newChaudoudoux")
      */
     public function newChaudoudoux(Request $request, EntityManagerInterface $em){
-        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        if(!$this->getUser()){
+            return $this->redirectToRoute('app_homepage');
+        }
 
         $user = $this->getUser();
 
