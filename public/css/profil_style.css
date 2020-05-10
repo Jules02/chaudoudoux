@@ -82,6 +82,16 @@
     text-decoration: underline;
 }
 
+.buy-credits-attention{
+    font-size: 14px;
+    font-weight: 600;
+    margin: 10px 30px -5px;
+}
+
+.buy-widget-info{
+    margin-bottom: 5px;
+}
+
 .buy-credits-wrapper iframe{
     height: 75px;
 }
