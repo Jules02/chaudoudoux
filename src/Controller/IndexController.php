@@ -183,13 +183,6 @@ class IndexController extends AbstractController
         $em->persist($chaudoudoux);
         $em->flush();
 
-        $image = imagecreatefromjpeg('img/chaudoudoux/' . $chaudoudoux->getImage());
-        $text_color = imagecolorallocate($image, 233, 14, 91);
-        imagestring($image, 1, 5, 5,  'A Simple Text String', $text_color);
-        header('Content-Type: image/jpeg');
-        imagejpeg($image, 'img/test.jpg');
-        imagedestroy($image);
-
         if($username == $chaudoudoux->getToUser() or $chaudoudoux->getFromUser()){
             return $this->render("content/chaudoudoux.html.twig", [
                 'chaudoudoux' => $chaudoudoux
@@ -198,63 +191,6 @@ class IndexController extends AbstractController
             $this->addFlash('error', "Vous n'êtes pas le destinataire de ce chaudoudoux");
             return $this->redirectToRoute('app_homepage_loggedin');
         }
-    }
-
-    /**
-     * @Route("/chaudoudoux/{id}/export", name="app_chaudoudoux_export")
-     */
-    public function chaudoudouxExport(EntityManagerInterface $em, $id){
-        $username = $this->getUser()->getUsername();
-
-        $repository = $em->getRepository(Chaudoudoux::class);
-        $chaudoudoux = $repository->find($id);
-
-        if(!$this->getUser() || $username !== $chaudoudoux->getToUser() and $username !== $chaudoudoux->getFromUser()){
-            $this->addFlash('error', "Vous n'êtes pas le destinataire de ce chaudoudoux");
-            return $this->redirectToRoute('app_homepage_loggedin');
-        }
-
-
-        $canvas_x = 602;
-        $canvas_y = 1000;
-        $canvas = imagecreatetruecolor($canvas_x, $canvas_y);
-        $bg = imagecolorallocate($canvas, 255, 255, 255);
-        imagefilledrectangle($canvas,0,0,$canvas_x,$canvas_y,$bg);
-
-        $chaudoudouxImage = imagecreatefromjpeg('img/chaudoudoux/' . $chaudoudoux->getImage());
-        imagecopy($canvas, $chaudoudouxImage, 50, 100, 0, 0, 502, 334);
-
-        $black = imagecolorallocate($canvas, 0, 0, 0);
-
-        $text = $chaudoudoux->getText();
-
-        putenv('GDFONTPATH=' . realpath('.') . '/fonts/');
-
-        $font = 'sourcesanspro';
-        imagettftext($canvas, 4, 0, 50, 500, $black, $font, $text);
-
-        header('Content-Type: image/jpeg');
-        $imagePath = 'img/chaudoudouxexport/' . $chaudoudoux->getId() . '.jpg';
-
-        imagejpeg($canvas, $imagePath);
-
-        $file = $imagePath;
-
-        if (file_exists($file)) {
-            header('Content-Description: File Transfer');
-            header('Content-Type: application/octet-stream');
-            header('Content-Disposition: attachment; filename="'.basename($file).'"');
-            header('Expires: 0');
-            header('Cache-Control: must-revalidate');
-            header('Pragma: public');
-            header('Content-Length: ' . filesize($file));
-            readfile($file);
-            exit;
-        }
-
-        imagedestroy($image);
-
-        return $this->redirectToRoute('app_chaudoudoux', array('id' => $id));
     }
 
     /**
