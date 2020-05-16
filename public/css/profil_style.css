@@ -83,24 +83,20 @@
 }
 
 .buy-credits-attention{
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 600;
-    margin: 10px 30px -5px;
+    margin: 10px 30px;
 
     color: red;
 }
 
-.buy-widget-info{
-    margin-bottom: 5px;
-}
-
 .buy-credits-wrapper iframe{
-    height: 75px;
+    height: 100px;
 }
 
 .buy-credits-content{
-    width: 500px;
-    height: 600px;
+    width: 600px;
+    height: 300px;
 
     display: flex;
     flex-direction: column;
